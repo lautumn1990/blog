@@ -71,4 +71,5 @@ paginate_path: "page/:num/"
 
 JB:
     BASE_PATH : /blog
+    tags_path: /tags
 baseurl: /blog
