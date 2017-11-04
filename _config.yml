@@ -44,7 +44,7 @@ social:
 
 permalink: /:year/:month/:title/
 # Format
-# highlighter: rouge
+highlighter: rouge
 
 textColor: #FF0000
 
