@@ -68,9 +68,6 @@ paginate: 10
 paginate_path: "page/:num/"
 
 # basePath
-BASE_PATH : /blog
-
 
 JB:
     BASE_PATH : /blog
-baseurl: /blog
