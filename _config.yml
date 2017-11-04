@@ -73,3 +73,5 @@ JB:
     BASE_PATH : /blog
     tags_path: /tags
 baseurl: /blog
+
+pygments: true
