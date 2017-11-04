@@ -76,4 +76,3 @@ baseurl: /blog
 
 pygments: true
 markdown: kramdown
-highlight: true
