@@ -70,6 +70,8 @@ paginate_path: "page/:num/"
 # basePath
 BASE_PATH : /blog
 
+safe: true
+
 JB:
     setup:
         provider: custom
