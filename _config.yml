@@ -74,3 +74,4 @@ JB:
     setup:
         provider: custom
     BASE_PATH : /blog
+baseurl: /blog
