@@ -44,7 +44,7 @@ social:
 
 permalink: /:year/:month/:title/
 # Format
-# highlighter: rouge
+highlighter: rouge
 
 textColor: #FF0000
 
@@ -74,5 +74,5 @@ JB:
     tags_path: /tags
 baseurl: /blog
 
-pygments: true
-markdown: kramdown
+# pygments: true
+# markdown: kramdown
