@@ -21,4 +21,4 @@ docker-compose -f ./docker/docker-compose.default.yml up
 
 然后访问 `http://localhost:4000/`
 
-查看更多[TeXt安装教程](https://blog.lautumn.cn/2021/08/19/first-post.html)
+查看更多[TeXt安装教程](https://blog.lautumn.cn/text/2021/08/19/first-post.html)
