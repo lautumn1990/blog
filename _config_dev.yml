@@ -1,0 +1,8 @@
+## => Plugins
+# local don't use jekyll-remote-theme
+##############################
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jemoji
