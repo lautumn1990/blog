@@ -1,6 +1,7 @@
 ---
 title: TeXt安装教程
 tags: TeXt
+key: first post
 ---
 
 TeXt安装教程 docker-compose方式
