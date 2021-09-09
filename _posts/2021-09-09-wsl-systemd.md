@@ -1,6 +1,6 @@
 ---
 title: 在wsl上使用systemd
-tags: [ wsl, systemd ]
+tags: [ wsl, systemd, docker ]
 categories: [ wsl ]
 key: wsl-systemd
 pageview: true
@@ -81,6 +81,17 @@ ws.run "wsl -d Ubuntu -u root /etc/init.wsl", vbhide
 ```
 
 > 注：参数中的 Ubuntu 需要改成你自己使用的 WSL 发行版名称。
+
+## docker覆盖问题
+
+通过systemd启动的docker可能会覆盖docker desktop的WSL Integration中的命令
+
+进入`genie -s`中的`shell`
+
+```shell
+systemctl disable docker.service
+systemctl disable docker.socket
+```
 
 ## 参考
 
