@@ -107,6 +107,53 @@ layout: none
 ]
 ```
 
+转义`C:\Windows\System32\cmd.exe`这种带反斜线的失败, 需要复制`simple_search_filter.rb`和`simple_search_filter_cn.rb`到`_plugins`文件夹下
+
+```ruby
+# simple_search_filter.rb
+module Jekyll
+  module CharFilter
+    def remove_chars(input)
+      input.gsub! '\\','&#92;'
+      input.gsub! /\t/, '    '
+      input.strip_control_and_extended_characters
+    end
+  end
+end
+
+Liquid::Template.register_filter(Jekyll::CharFilter)
+
+class String
+  def strip_control_and_extended_characters()
+    chars.each_with_object("") do |char, str|
+      str << char if char.ascii_only? and char.ord.between?(32,126)
+    end
+  end
+end
+```
+
+```ruby
+# simple_search_filter_cn.rb
+module Jekyll
+  module CharFilter
+    def remove_chars_cn(input)
+      input.gsub! '\\','&#92;'
+      input.gsub! /\t/, '    '
+    input.gsub! '@',''
+    input.gsub! '$',''
+    input.gsub! '%',''
+    input.gsub! '&',''
+    input.gsub! '"',''
+    input.gsub! '{',''
+    input.gsub! '}',''
+    input
+    end
+  end
+end
+
+Liquid::Template.register_filter(Jekyll::CharFilter)
+```
+
 即可使用`Simple-Jekyll-Search`提供的全文搜索功能
 
 还可以参考[码志](https://github.com/mzlogin/mzlogin.github.io)使用方式
