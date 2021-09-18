@@ -1,6 +1,6 @@
 ---
 title: win+r中执行shell:startup
-tags: [ windows, shell ]
+tags: [ windows ]
 categories: [ windows ]
 key: windows-shell-commands
 pageview: true

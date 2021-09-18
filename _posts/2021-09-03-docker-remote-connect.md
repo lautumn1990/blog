@@ -1,6 +1,6 @@
 ---
 title: docker 远程连接
-tags: [ docker, remote ]
+tags: [ docker ]
 categories: [ docker ]
 key: docker-remote-connect
 pageview: true

@@ -1,6 +1,6 @@
 ---
 title: jekyll中添加图片
-tags: [ TeXt, jekyll, images ]
+tags: [ TeXt, jekyll ]
 categories: [ TeXt, images ]
 key: create-images
 pageview: true

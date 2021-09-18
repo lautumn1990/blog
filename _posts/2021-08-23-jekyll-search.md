@@ -1,6 +1,6 @@
 ---
 title: jekyll-TeXt-theme全文搜索
-tags: [ TeXt, search, jekyll ]
+tags: [ TeXt, jekyll ]
 categories: [ TeXt, search ]
 key: jekyll-search
 pageview: true

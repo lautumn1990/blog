@@ -1,6 +1,6 @@
 ---
 title: Dockerfile中CMD和ENTRYPOINT区别
-tags: [ docker, cmd, entrypoint, dockerfile ]
+tags: [ docker ]
 categories: [ docker ]
 key: dockerfile-cmd-vs-entrypoint
 pageview: true

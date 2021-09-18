@@ -1,6 +1,6 @@
 ---
 title: docker compose安装mysql redis
-tags: [ docker, compose ]
+tags: [ docker ]
 categories: [ docker ]
 key: docker-compose-mysql-redis
 pageview: true

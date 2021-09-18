@@ -1,6 +1,6 @@
 ---
 title: 在wsl上使用systemd
-tags: [ wsl, systemd, docker ]
+tags: [ wsl, docker ]
 categories: [ wsl ]
 key: wsl-systemd
 pageview: true

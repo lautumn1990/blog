@@ -1,6 +1,6 @@
 ---
 title: spring boot 优雅停机
-tags: [ java, spring, springboot, shutdown, linux ]
+tags: [ java, spring, linux ]
 categories: [ java ]
 key: spring-boot-gracefully-shutdown
 pageview: true
