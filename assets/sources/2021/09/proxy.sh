@@ -2,8 +2,9 @@
 hostip=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
 wslip=$(hostname -I | awk '{print $1}')
 port=${2:-'10808'}
+protocol=${3:-'socks5'}
 
-PROXY_HTTP="http://${hostip}:${port}"
+PROXY_HTTP="${protocol}://${hostip}:${port}"
 
 set_proxy(){
     export http_proxy="${PROXY_HTTP}"

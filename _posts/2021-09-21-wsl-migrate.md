@@ -31,7 +31,19 @@ del "%wsl_path%\docker-desktop-data.tar"
 del "%wsl_path%\docker-desktop.tar"
 ```
 
-ubuntu迁移默认用户失败
+ubuntu迁移
+
+```bat
+rem 重新设置ubuntu 位置  
+wsl --export ubuntu "%wsl_path%\ubuntu.tar"  
+wsl --unregister ubuntu  
+wsl --import ubuntu %wsl_path%\ubuntu "%wsl_path%\ubuntu.tar" --version 2  
+
+rem 删除多余的tar备份
+del "%wsl_path%\ubuntu.tar"
+```
+
+ubuntu迁移默认用户失败, 参考[build no. 18980](https://docs.microsoft.com/zh-cn/windows/wsl/release-notes#build-18980)
 
 ```conf
 [user]
@@ -61,8 +73,9 @@ export https_proxy='http://<Windows IP>:<Port>'
 hostip=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
 wslip=$(hostname -I | awk '{print $1}')
 port=${2:-'10808'}
+protocol=${3:-'socks5'}
 
-PROXY_HTTP="http://${hostip}:${port}"
+PROXY_HTTP="${protocol}://${hostip}:${port}"
 
 set_proxy(){
     export http_proxy="${PROXY_HTTP}"
@@ -111,7 +124,7 @@ git config --global --unset http.proxy
 git config --global --unset https.proxy
 ```
 
-然后执行`. ./proxy.sh set 端口号`
+然后执行`. ./proxy.sh set 端口号 协议`, 默认`. ./proxy.sh set`相当于`. ./proxy.sh set 10808 socks5`
 
 或者添加到`~/.bashrc`中
 
