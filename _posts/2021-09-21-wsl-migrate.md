@@ -137,7 +137,32 @@ alias proxy="source /path/to/proxy.sh"
 
 第二句话就是在每次 shell 启动的时候运行该脚本实现自动设置代理，这样以后不用额外操作就默认设置好代理啦~
 
+## wsl中ls绿油油一片
+
+主要是因为在 WSL 中，Microsoft 实现了两种文件系统，用于支持不同的使用场景：
+
+- VolFs
+    着力于在 Windows 文件系统上提供完整的 Linux 文件系统特性，通过各种手段实现了对 Inodes、Directory entries、File objects、File descriptors、Special file types 的支持。比如为了支持 Windows 上没有的 Inodes，VolFs 会把文件权限等信息保存在文件的 NTFS Extended Attributes 中。就是因为 Windows 中新建的文件缺少这个扩展参数，VolFs 无法正确获取该文件的 metadata，而且有些 Windows 上的编辑器会在保存时抹掉这些附加参数。
+
+    `WSL 中的 / 使用的就是 VolFs 文件系统。`
+
+- DrvFs
+    着力于提供与 Windows 文件系统的互操作性。与 VolFs 不同，为了提供最大的互操作性，DrvFs 不会在文件的 NTFS Extended Attributes 中储存附加信息，而是从 Windows 的文件权限（Access Control Lists，就是你右键文件 > 属性 > 安全选项卡中的那些权限配置）推断出该文件对应的的 Linux 文件权限。
+
+    `所有 Windows 盘符挂载至 WSL 下的 /mnt 时都是使用的 DrvFs 文件系统。`
+
+解决方法, 在 WSL 中创建 `/etc/wsl.conf`，在其中填写如下内容：
+
+```conf
+[automount]
+enabled = true
+root = /mnt/
+options = "metadata,umask=22,fmask=111"
+mountFsTab = true
+```
+
 ## 参考
 
 - [wsl2 docker 迁移](https://www.cnblogs.com/xzhg/p/14959196.html)
 - [WSL2 中访问宿主机 Windows 的代理](https://zinglix.xyz/2020/04/18/wsl2-proxy)
+- [WSL 配置指北：打造 Windows 最强命令行](https://segmentfault.com/a/1190000016677670)
