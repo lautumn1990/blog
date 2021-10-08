@@ -186,17 +186,17 @@ String str = stream.collect(Collectors.joining()).toString();
 
 接下来，当把一个数据结构包装成 Stream 后，就要开始对里面的元素进行各类操作了。常见的操作可以归类如下。
 
-- Intermediate：
+- **Intermediate**：
 
-    `map (mapToInt, flatMap 等)、 filter、 distinct、 sorted、 peek、 limit、 skip、 parallel、 sequential、 unordered`
+    map (mapToInt, flatMap 等)、 filter、 distinct、 sorted、 peek、 limit、 skip、 parallel、 sequential、 unordered
 
-- Terminal：
+- **Terminal**：
 
-    `forEach、 forEachOrdered、 toArray、 reduce、 collect、 min、 max、 count、 anyMatch、 allMatch、 noneMatch、 findFirst、 findAny、 iterator`
+    forEach、 forEachOrdered、 toArray、 reduce、 collect、 min、 max、 count、 anyMatch、 allMatch、 noneMatch、 findFirst、 findAny、 iterator
 
-- Short-circuiting：
+- **Short-circuiting**：
 
-    `anyMatch、 allMatch、 noneMatch、 findFirst、 findAny、 limit`
+    anyMatch、 allMatch、 noneMatch、 findFirst、 findAny、 limit
 
 我们下面看一下 Stream 的比较典型用法。
 
@@ -231,10 +231,10 @@ collect(Collectors.toList());
 
 ```java
 Stream<List<Integer>> inputStream = Stream.of(
- Arrays.asList(1),
- Arrays.asList(2, 3),
- Arrays.asList(4, 5, 6)
- );
+    Arrays.asList(1),
+    Arrays.asList(2, 3),
+    Arrays.asList(4, 5, 6)
+    );
 Stream<Integer> outputStream = inputStream.
 flatMap((childList) -> childList.stream());
 ```
@@ -277,6 +277,7 @@ forEach 方法接收一个 Lambda 表达式，然后在 Stream 的每一个元�
 roster.stream()
     .filter(p -> p.getGender() == Person.Sex.MALE)
     .forEach(p -> System.out.println(p.getName()));
+
 // Pre-Java 8
 for (Person p : roster) {
     if (p.getGender() == Person.Sex.MALE) {
@@ -336,10 +337,10 @@ public static void print(String text) {
     }
  }
 public static int getLength(String text) {
- // Java 8
-return Optional.ofNullable(text).map(String::length).orElse(-1);
- // Pre-Java 8
-// return if (text != null) ? text.length() : -1;
+    // Java 8
+    return Optional.ofNullable(text).map(String::length).orElse(-1);
+    // Pre-Java 8
+    // return if (text != null) ? text.length() : -1;
  };
 ```
 
@@ -351,9 +352,9 @@ Stream 中的 findAny、max/min、reduce 等方法等返回 Optional 值。还�
 
 这个方法的主要作用是把 Stream 元素组合起来。它提供一个起始值（种子），然后依照运算规则（BinaryOperator），和前面 Stream 的第一个、第二个、第 n 个元素组合。从这个意义上说，字符串拼接、数值的 sum、min、max、average 都是特殊的 reduce。例如 Stream 的 sum 就相当于
 
-Integer sum = integers.reduce(0, (a, b) -> a+b); 或
+`Integer sum = integers.reduce(0, (a, b) -> a+b);` 或
 
-Integer sum = integers.reduce(0, Integer::sum);
+`Integer sum = integers.reduce(0, Integer::sum);`
 
 也有没有起始值的情况，这时会把 Stream 的前面两个元素组合起来，返回的是 Optional。
 
@@ -410,7 +411,7 @@ private class Person {
 
 输出结果为：
 
-```java
+```text
 name1
 name2
 name3
@@ -443,7 +444,7 @@ System.out.println(personList2);
 
 上面的示例对清单 13 做了微调，首先对 5 个元素的 Stream 排序，然后进行 limit 操作。输出结果为：
 
-```java
+```text
 name2
 name1
 name3
