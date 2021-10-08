@@ -75,9 +75,13 @@ config interface 'lan'
 
 通过服务passwall的配置, 配置订阅地址, 自动更新, 上网规则等设置
 
+注意规则列表可能更新失败, 多下载几次, 或者将`jsdelivr.net`加入直连列表
+
+备份规则`docker cp openwrt:/etc/config/passwall passwall.backup`, 不过可能版本之间不兼容
+
 - 配置防火墙
 
-镜像中的防火墙配置可能有问题, 通过注释掉网络 - 防火墙 - 自定义规则中的 "iptables -t nat -I POSTROUTING -j MASQUERADE", 可能会正常
+镜像中的防火墙配置可能有问题, 通过注释掉网络 - 防火墙 - 自定义规则中的 `iptables -t nat -I POSTROUTING -j MASQUERADE`{:.success}, 可能会正常
 
 - 持久化开启promisc混合模式, 创建macvlan访问openwrt
 
@@ -174,11 +178,11 @@ network:
         macvlan:
             addresses:
                 - 192.168.0.200/24
-            gateway4: 192.168.0.201
+            #gateway4: 192.168.0.201
             routes:
                 - to: 0.0.0.0/0
-                    via: 192.168.0.201
-                    metric: 40
+                  via: 192.168.0.1
+                  metric: 0
 ```
 
 修改文件权限

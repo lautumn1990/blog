@@ -45,6 +45,8 @@ del "%wsl_path%\ubuntu.tar"
 
 ubuntu迁移默认用户失败, 参考[build no. 18980](https://docs.microsoft.com/zh-cn/windows/wsl/release-notes#build-18980)
 
+`/etc/wsl.conf`文件
+
 ```conf
 [user]
 default=username
@@ -159,6 +161,48 @@ enabled = true
 root = /mnt/
 options = "metadata,umask=22,fmask=111"
 mountFsTab = true
+```
+
+## wsl修改host名称
+
+修改`/etc/wsl.conf`, 参考[hostname](https://github.com/microsoft/WSL/issues/4305#issuecomment-680848763)
+
+```conf
+[network]
+hostname=WSL
+```
+
+## wsl注册表
+
+`HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Lxss`注册表地址
+
+## 安装其他wsl版本的linux系统
+
+[Project List Using wsldl](https://wsldl-pg.github.io/docs/Using-wsldl/)
+
+安装方法
+
+```shell
+# 安装
+{InstanceName}.exe
+# 修改用户
+{InstanceName}.exe config --default-user user
+# 卸载
+{InstanceName}.exe clean
+# wsl 转 wsl2
+wsl --set-version {name} 2
+```
+
+## wsl 限制内存
+
+`%userprofile%\.wslconfig`, 参考[wsl-config](https://docs.microsoft.com/zh-cn/windows/wsl/wsl-config),
+[英文原版](https://docs.microsoft.com/en-us/windows/wsl/wsl-config)
+
+```conf
+[wsl2]  
+memory=2GB  
+processors=4  
+swap=512MB  
 ```
 
 ## 参考
