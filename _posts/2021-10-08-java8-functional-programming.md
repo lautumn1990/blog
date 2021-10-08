@@ -1475,4 +1475,4 @@ public class State {
 
 ## 参考
 
-- [深入理解Java函数式编程(转载)](https://raw.githubusercontent.com/bergturing/java/master/lambda/document/resources/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B(%E8%BD%AC%E8%BD%BD).md)
+- [深入理解Java函数式编程(转载)](https://github.com/bergturing/java/blob/master/lambda/document/resources/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B(%E8%BD%AC%E8%BD%BD).md)
