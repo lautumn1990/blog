@@ -94,7 +94,7 @@ Stream 的另外一大特点是，数据源本身可以是无限的。
   - Collection.stream()
   - Collection.parallelStream()
   - Arrays.stream(T array) or Stream.of()
-  - 从 BufferedReader
+- 从 BufferedReader
   - java.io.BufferedReader.lines()
 - 静态工厂
   - java.util.stream.IntStream.range()
