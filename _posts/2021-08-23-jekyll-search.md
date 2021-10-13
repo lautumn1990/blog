@@ -5,11 +5,12 @@ categories: [ TeXt, search ]
 key: jekyll-search
 pageview: true
 ---
-<!-- {% raw %} -->
 
 ## 默认是标题搜索
 
 <!--more-->
+
+<!-- {% raw %} -->
 
 `config.yml`
 
