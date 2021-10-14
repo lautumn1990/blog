@@ -45,7 +45,7 @@ services:
       --sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO"   
     volumes:
       - ./data:/var/lib/mysql
-      - ./conf/my.cnf:/etc/my.cnf
+      - ./conf/my.cnf:/etc/mysql/my.cnf
     restart: always
 ```
 
