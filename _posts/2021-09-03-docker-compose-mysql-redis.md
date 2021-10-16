@@ -80,7 +80,6 @@ default-character-set=utf8
 docker-compose.yml
 conf/redis.conf
 data/
-logs/
 ```
 
 `docker-compose.yml`文件
@@ -94,7 +93,6 @@ services:
     volumes:
       - ./data:/data
       - ./conf/redis.conf:/usr/local/etc/redis/redis.conf
-      - ./logs:/logs
     command:
       redis-server /usr/local/etc/redis/redis.conf
     ports:
@@ -109,7 +107,6 @@ services:
 port 6379 
 timeout 0
 loglevel verbose 
-logfile /logs/redis.log
 save 900 1
 save 300 10
 save 60 10000
