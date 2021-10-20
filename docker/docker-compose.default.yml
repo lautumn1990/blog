@@ -7,9 +7,10 @@ services:
       - JEKYLL_ENV
     ports:
       - 4000:4000
+      - 35729:35729
     container_name: jekyll-TeXt-theme_default
     volumes:
       - ..:/usr/src/app
     stdin_open: true
     tty: true
-    command: bundle exec jekyll serve -H 0.0.0.0 -t --force_polling --watch --config _config.yml,_config_dev.yml
+    command: bundle exec jekyll serve -H 0.0.0.0 -t --force_polling --watch --livereload --config _config.yml,_config_dev.yml
