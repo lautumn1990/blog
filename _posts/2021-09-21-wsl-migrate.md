@@ -163,6 +163,25 @@ options = "metadata,umask=22,fmask=111"
 mountFsTab = true
 ```
 
+>通过此方法改动可能会产生通过`VS Code`的`WSL targets`打不开, 报错
+>
+>```text
+>sh: 1: /mnt/c/Users/XXXX/.vscode-insiders/extensions/ms-vscode-remote.remote-wsl-0.42.0/scripts/wslServer.sh: Permission denied
+>```
+>
+>在wsl2中进入报错目录,
+>
+>```shell
+>chmod +x *
+>```
+>
+>添加可执行权限
+>
+>参考
+>
+>- [Support WSL mount options with vscode remote](https://github.com/microsoft/vscode-remote-release/issues/2126)
+>- [wslServer.sh: Permission denied](https://blog.csdn.net/WUDIxi/article/details/104760452)
+
 ## wsl修改host名称
 
 修改`/etc/wsl.conf`, 参考[hostname](https://github.com/microsoft/WSL/issues/4305#issuecomment-680848763)
