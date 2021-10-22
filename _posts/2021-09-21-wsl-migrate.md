@@ -84,7 +84,7 @@ set_proxy(){
     export HTTP_PROXY="${PROXY_HTTP}"
 
     export https_proxy="${PROXY_HTTP}"
-    export HTTPS_proxy="${PROXY_HTTP}"
+    export HTTPS_PROXY="${PROXY_HTTP}"
 }
 
 unset_proxy(){
