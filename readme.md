@@ -31,3 +31,5 @@ docker-compose -p jekyll -f ./docker/docker-compose.default.yml up
 通过`\\wsl$\`访问文件系统, 可使用宿主机的 `vscode` 的插件, 而不用通过 `vscode server` 访问系统
 
 参考[Speed up your builds...](https://www.forevolve.com/en/articles/2020/02/07/speed-up-your-builds-and-watch-for-changes-to-up-to-375-percent-using-this-workaround-on-wsl2-ubuntu-on-windows/)
+
+通过`\\wsl$\`访问文件系统, 可能导致无法使用`markdownlint`进行格式提醒, 可以通过`net use s: \\wsl$\ubuntu`进行映射, 然后通过`S盘`进行访问. 删除方法 `net use s: /del`

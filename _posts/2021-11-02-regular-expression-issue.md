@@ -38,14 +38,14 @@ pageview: true
 - `$` 匹配文本行结尾
 
 ```bash
-$ grep -h '.zip' dirlist*.txt
+grep -h '.zip' dirlist*.txt
 ```
 
 上面命令在文件中查找包含正则表达式“.zip”的文本行。注意，上面命令不会匹配`zip`程序，因为`zip`只有三个字符，而`.zip`要求四个字符。
 
 ```bash
-$ grep -h '^zip' dirlist*.txt
-$ grep -h 'zip$' dirlist*.txt
+grep -h '^zip' dirlist*.txt
+grep -h 'zip$' dirlist*.txt
 ```
 
 上面命令分别在文件列表中搜索行首，行尾以及行首和行尾同时包含字符串“zip”（例如，zip 独占一行）的匹配行。 注意正则表达式‘^$’（行首和行尾之间没有字符）会匹配空行。
@@ -55,7 +55,7 @@ $ grep -h 'zip$' dirlist*.txt
 方括号之中的字符，表示可以任意匹配其中的一个。
 
 ```bash
-$ grep -h '[bg]zip' dirlist*.txt
+grep -h '[bg]zip' dirlist*.txt
 ```
 
 上面命令匹配包含字符串“bzip”或者“gzip”的任意行。
@@ -63,7 +63,7 @@ $ grep -h '[bg]zip' dirlist*.txt
 注意，元字符放入方括号之中，会失去其特殊含义。但有两种情况除外，`^`在方括号的开头，表示否定，否则只是一个普通字符，表示原义。
 
 ```bash
-$ grep -h '[^bg]zip' dirlist*.txt
+grep -h '[^bg]zip' dirlist*.txt
 ```
 
 上面命令匹配不以`b`或`g`开头的`zip`字符串。注意，上面命令不会匹配`zip`，因为一个否定的字符集仍然要求存在一个字符。
@@ -71,7 +71,7 @@ $ grep -h '[^bg]zip' dirlist*.txt
 `-`在方括号之中表示一个字符区域。
 
 ```bash
-$ grep -h '^[A-Z]' dirlist*.txt
+grep -h '^[A-Z]' dirlist*.txt
 ```
 
 上面命令匹配所有以大写字母开头的文本行。类似的，`^[A-Za-z0-9]`表示以大写字母、小写字母、数字开头的文本行。
@@ -79,7 +79,7 @@ $ grep -h '^[A-Z]' dirlist*.txt
 注意，连字号如果不构成一个字符区域，则表示其本来的含义。
 
 ```bash
-$ grep -h '[-AZ]' dirlist*.txt
+grep -h '[-AZ]' dirlist*.txt
 ```
 
 上面命令匹配包含一个连字符，或一个大写字母“A”，或一个大写字母“Z”的文件名。
@@ -89,29 +89,29 @@ $ grep -h '[-AZ]' dirlist*.txt
 由于`locale`设置不同，Shell展开正则表达式`[A-Z]`时，可能不是解释为所有大写字母，而是解释为包括所有字母的字典顺序。
 
 ```bash
-$ ls /usr/sbin/[A-Z]*
+ls /usr/sbin/[A-Z]*
 ```
 
 上面命令在某些发行版里面，会返回所有大写字母或小写字母开头的文件。
 
 为了避免这个问题，可以使用正则表达式的预定义字符类。
 
-- `[:alnum:]`	字母数字字符。在 ASCII 中，等价于：`[A-Za-z0-9]`
-- `[:word:]`	与`[:alnum:]`相同, 但增加了下划线字符。
-- `[:alpha:]`	字母字符。在 ASCII 中，等价于`[A-Za-z]`
-- `[:blank:]`	包含空格和 tab 字符。
-- `[:cntrl:]`	ASCII 的控制码。包含了0到31，和127的 ASCII 字符。
-- `[:digit:]`	数字0到9
-- `[:graph:]`	可视字符。在 ASCII 中，它包含33到126的字符。
-- `[:lower:]`	小写字母。
-- `[:punct:]`	标点符号字符。
-- `[:print:]`	可打印的字符。等于`[:graph:]`中的所有字符，再加上空格字符。
-- `[:space:]`	空白字符，包括空格，tab，回车，换行，vertical tab, 和 form feed.在 ASCII 中， 等价于`[ \t\r\n\v\f]`
-- `[:upper:]`	大写字母。
-- `[:xdigit:]`	用来表示十六进制数字的字符。在 ASCII 中，等价于`[0-9A-Fa-f]`
+- `[:alnum:]`    字母数字字符。在 ASCII 中，等价于：`[A-Za-z0-9]`
+- `[:word:]`     与`[:alnum:]`相同, 但增加了下划线字符。
+- `[:alpha:]`    字母字符。在 ASCII 中，等价于`[A-Za-z]`
+- `[:blank:]`    包含空格和 tab 字符。
+- `[:cntrl:]`    ASCII 的控制码。包含了0到31，和127的 ASCII 字符。
+- `[:digit:]`    数字0到9
+- `[:graph:]`    可视字符。在 ASCII 中，它包含33到126的字符。
+- `[:lower:]`    小写字母。
+- `[:punct:]`    标点符号字符。
+- `[:print:]`    可打印的字符。等于`[:graph:]`中的所有字符，再加上空格字符。
+- `[:space:]`    空白字符，包括空格，tab，回车，换行，vertical tab, 和 form feed.在 ASCII 中， 等价于`[ \t\r\n\v\f]`
+- `[:upper:]`    大写字母。
+- `[:xdigit:]`   用来表示十六进制数字的字符。在 ASCII 中，等价于`[0-9A-Fa-f]`
 
 ```bash
-$ ls /usr/sbin/[[:upper:]]*
+ls /usr/sbin/[[:upper:]]*
 ```
 
 上面命令返回所有大写字母开头的文件名。
@@ -134,9 +134,9 @@ $
 `|`可以多个连用，也可以与其他正则规则结合使用。
 
 ```bash
-$ echo "AAA" | grep -E 'AAA|BBB|CCC'
+echo "AAA" | grep -E 'AAA|BBB|CCC'
 
-$ grep -Eh '^(bz|gz|zip)' dirlist*.txt
+grep -Eh '^(bz|gz|zip)' dirlist*.txt
 ```
 
 ### 量词操作符
@@ -150,7 +150,6 @@ $ grep -Eh '^(bz|gz|zip)' dirlist*.txt
 - `{n,m}` 匹配前面的元素它至少出现了`n`次，但是不多于`m`次
 - `{n,}` 匹配前面的元素至少出现了`n`次
 - `{,m}` 匹配前面的元素，如果它出现的次数不多于 m 次。
-
 
 ## 扩展用法
 
