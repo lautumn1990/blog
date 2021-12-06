@@ -60,9 +60,36 @@ reg delete HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2} /f
 
 `设置` -> `时间和语言` -> `语言 & 区域` -> `中文...` -> `选项` -> `键盘` -> `微软拼音` -> `选项删除`
 
+### 查看激活信息, 和win10一样
+
+```bat
+rem 查看过期时间
+slmgr.vbs -xpr
+rem 查看激活详情
+slmgr.vbs -dlv
+```
+
+其他命令
+
+```bat
+rem 卸载当前产品密钥
+slmgr.vbs /upk
+rem 安装产品密钥，也可以说是替换现有密钥
+slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
+rem 设置设置KMS服务器IP地址及端口
+slmgr.vbs /skms zh.us.to
+rem 开始利用安装的秘钥尝试在线激活Windows，如果我没有理解错的话，ato就是attempt online的缩写
+slmgr.vbs /ato
+rem 这个命令是从注册表中清除产品密钥信息，这是一项安全举措，清除之后那些声称读取产品密钥的软件就读不到了。这个命令相当重要，尤其在企业内部
+slmgr.vbs -cpky
+rem 导入OEM证书，后面为OEM证书的路径
+slmgr.vbs -ilc
+```
+
 ----
 
 ## 参考
 
 - [How to Disable ‘Show More Options’ from the Right Click Menu in Windows 11](https://appuals.com/disable-show-more-options-windows-11/)
 - [Remove Show More Options entry from Windows 11 Context menu](https://www.thewindowsclub.com/remove-show-more-options-entry-from-windows-11-context-menu)
+- [Windows软件授权管理工具slmgr命令(激活系统)](https://jingyan.baidu.com/article/25648fc17b5d669191fd0091.html)
