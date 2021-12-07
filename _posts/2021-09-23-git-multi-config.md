@@ -89,6 +89,14 @@ git config user.name "USER_B"
 git config user.email "USER_B@example.com"
 ```
 
+### git批量删除远程分支
+
+[Delete multiple remote branches in git](https://stackoverflow.com/questions/10555136/delete-multiple-remote-branches-in-git/30619317)
+
+```sh
+git branch -r | awk -Forigin/ '/\/release/ {print $2}' | xargs -I {} git push origin :{}
+```
+
 ## 参考
 
 - [git 多用户配置（多用户 & 公司/个人）](https://segmentfault.com/a/1190000038722640)
