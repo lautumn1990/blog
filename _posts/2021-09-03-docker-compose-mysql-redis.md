@@ -10,7 +10,7 @@ pageview: true
 
 <!--more-->
 
-使用`docker-compose`
+使用`docker-compose`, 下载[示例](/assets/sources/2021/09/mysql.zip)
 
 目录结构
 
@@ -72,7 +72,7 @@ default-character-set=utf8
 
 参考[使用docker-compose配置redis服务](https://www.cnblogs.com/xpengp/p/12713374.html)
 
-使用`docker-compose`
+使用`docker-compose`, 下载[示例](/assets/sources/2021/09/redis.zip)
 
 目录结构
 
@@ -132,3 +132,19 @@ activerehashing yes
 启动
 
 `docker-compose up -d`
+
+## docker-compose禁止关闭自动启动
+
+[Clarification on how to stop containers with --restart=always](https://github.com/moby/moby/issues/10032)
+
+[List containers in the same docker-compose](https://stackoverflow.com/a/41943224)
+
+```sh
+# 查看docker compose project
+docker-compose ls
+# 使用wsl
+# 禁用自动重启, 修改<project-name>
+docker update --restart=no $(docker ps -aq -f label=com.docker.compose.project=<project-name>) &
+# 自动重启, 修改<project-name>
+docker update --restart=always $(docker ps -aq -f label=com.docker.compose.project=<project-name>) &
+```
