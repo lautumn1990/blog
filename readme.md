@@ -33,3 +33,26 @@ docker-compose -p jekyll -f ./docker/docker-compose.default.yml up
 参考[Speed up your builds...](https://www.forevolve.com/en/articles/2020/02/07/speed-up-your-builds-and-watch-for-changes-to-up-to-375-percent-using-this-workaround-on-wsl2-ubuntu-on-windows/)
 
 通过`\\wsl$\`访问文件系统, 可能导致无法使用`markdownlint`进行格式提醒, 可以通过`net use s: \\wsl$\ubuntu`进行映射, 然后通过`S盘`进行访问. 删除方法 `net use s: /del`
+
+## 增加复制代码功能
+
+- [为博客添加代码块一键复制功能](https://be-my-only.xyz/blog/TeXt-copy-to-clipboard/)
+- [Feature request: 增加代码块的一键复制功能](https://github.com/kitian616/jekyll-TeXt-theme/issues/200)
+- [feat: copy to clipboard for code blocks](https://github.com/kitian616/jekyll-TeXt-theme/pull/218)
+
+用法与它相反, 默认是添加代码块, 把不需要复制的代码块, 添加`{: .notcopyable}`
+
+比如
+
+<!-- markdownlint-disable MD033 MD040 MD048 -->
+<div class="snippet" markdown="1">
+
+~~~
+```python
+def hello():
+    print("Hello world!")
+```
+{: .notcopyable}
+~~~
+
+</div>
