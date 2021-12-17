@@ -110,22 +110,22 @@ linux常用命令(持续更新)
 
 1. 更改访问时间而不用创建新文件
 
-```sh
-touch -c linux.txt
-```
+    ```sh
+    touch -c linux.txt
+    ```
 
 1. 更改文件和目录的修改时间
 
-```sh
-touch -m linux.txt
-```
+    ```sh
+    touch -m linux.txt
+    ```
 
 1. 将访问时间和修改时间设置为特定的日期和时间
 
-```sh
-touch -c -t 202505211314.22 linux.txt
-touch -c -d "2025-05-21 13:14:22" linux.txt
-```
+    ```sh
+    touch -c -t 202505211314.22 linux.txt
+    touch -c -d "2025-05-21 13:14:22" linux.txt
+    ```
 
 ----
 
