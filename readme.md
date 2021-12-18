@@ -40,7 +40,7 @@ docker-compose -p jekyll -f ./docker/docker-compose.default.yml up
 - [Feature request: 增加代码块的一键复制功能](https://github.com/kitian616/jekyll-TeXt-theme/issues/200)
 - [feat: copy to clipboard for code blocks](https://github.com/kitian616/jekyll-TeXt-theme/pull/218)
 
-用法与它相反, 默认是添加代码块, 把不需要复制的代码块, 添加`{: .notcopyable}`
+用法与它相反, 默认是添加代码块, 把不需要复制的代码块, 添加`{: .notcopyable}`样式
 
 比如
 
