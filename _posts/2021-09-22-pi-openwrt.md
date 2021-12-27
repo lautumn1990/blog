@@ -193,7 +193,54 @@ network:
 
 `netplan apply` 或者 `netplan --debug apply`
 
+## 端口转发
+
+效果和 ssh -L 差不多，都是本地访问远程端口。
+
+通过 SOCKS 代理
+
+```sh
+socat TCP4-LISTEN:<本地端口>,reuseaddr,fork SOCKS:<代理服务器IP>:<远程地址>:<远程端口>,socksport=<代理服务器端口>
+```
+
+通过 HTTP 代理
+
+```sh
+socat TCP4-LISTEN:<本地端口>,reuseaddr,fork PROXY:<代理服务器IP>:<远程地址>:<远程端口>,proxyport=<代理服务器端口>
+```
+
+socat作为系统服务
+
+```sh
+sudo bash -c '
+cat <<EOF >/usr/lib/systemd/system/socat.service
+[Unit]
+Description=Socat Serial Loopback
+After=network.target
+
+[Service]
+Type=simple
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=socat
+
+ExecStart=socat TCP4-LISTEN:<本地端口>,reuseaddr,fork SOCKS:<代理服务器IP>:<远程地址>:<远程端口>,socksport=<代理服务器端口>
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+'
+# 其中ExecStart改为自己的命令
+sudo systemctl daemon-reload
+sudo systemctl enable --now socat
+sudo systemctl status socat
+```
+
+----
+
 ## 参考
 
 - [在Docker 中运行 OpenWrt 旁路网关](https://mlapp.cn/376.html)
 - [在 Docker 中运行 OpenWrt 旁路网关 透明网关](https://baymax.tips/posts/53042.html)
+- [使用 socat 通过 HTTP/SOCKS 代理进行端口转发](https://zhuanlan.zhihu.com/p/70979782)
