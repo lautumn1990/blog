@@ -86,6 +86,34 @@ rem 导入OEM证书，后面为OEM证书的路径
 slmgr.vbs -ilc
 ```
 
+### 打开控制面板
+
+`win` + `r` 打开运行框, 管理员权限运行, `ctrl` + `shift` + `enter`
+
+```bat
+rem 控制面板
+control
+rem 快速打开windows功能
+optionalfeatures
+
+rem 快速安装telnet客户端
+pkgmgr /iu:"TelnetClient"
+rem 卸载
+pkgmgr /uu:"TelnetClient"
+
+rem 查看功能模块名称, 管理员运行
+dism /online /Get-Features
+
+rem 快速打开hosts
+C:\Windows\System32\drivers\etc\hosts
+rem 或者win+r
+drivers
+rem 然后打开etc文件夹, hosts文件
+```
+
+windows快捷命令, [shell](/windows/2021/09/10/windows-shell-commands.html)
+windows快捷命令, [完整版](/windows/2021/12/27/windows-keyboard-shortcuts.html)
+
 ----
 
 ## 参考
