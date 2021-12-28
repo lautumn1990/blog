@@ -244,3 +244,4 @@ sudo systemctl status socat
 - [在Docker 中运行 OpenWrt 旁路网关](https://mlapp.cn/376.html)
 - [在 Docker 中运行 OpenWrt 旁路网关 透明网关](https://baymax.tips/posts/53042.html)
 - [使用 socat 通过 HTTP/SOCKS 代理进行端口转发](https://zhuanlan.zhihu.com/p/70979782)
+- [新版瑞士军刀：socat](https://zhuanlan.zhihu.com/p/347722248)

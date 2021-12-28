@@ -126,7 +126,7 @@ Host testlf
     RemoteCommand cat
 Host testrf
     HostName west-test.test.example.com
-    RemoteForward 12345:127.0.0.1:12345
+    RemoteForward 12345 127.0.0.1:12345
     RequestTTY no
     RemoteCommand cat
 # 默认配置
