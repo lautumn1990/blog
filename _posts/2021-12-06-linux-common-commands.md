@@ -127,16 +127,214 @@ linux常用命令(持续更新)
     touch -c -d "2025-05-21 13:14:22" linux.txt
     ```
 
+## awk
+
+1. 基本用法
+
+    `awk`的基本用法就是下面的形式。
+
+    示例
+
+    ```sh
+    # 格式
+    awk 动作 文件名
+    # 示例
+    awk '{print $0}' demo.txt
+    # 0是当前行, $1、$2、$3代表第一个字段、第二个字段、第三个字段等等。
+    ```
+
+    下面，我们先用标准输入（stdin）演示上面这个例子。
+
+    ```sh
+    $ echo 'this is a test' | awk '{print $0}'
+    this is a test
+    ```
+
+    awk会根据空格和制表符，将每一行分成若干字段，依次用$1、$2、$3代表第一个字段、第二个字段、第三个字段等等。
+
+    ```sh
+    $ echo 'this is a test' | awk '{print $3}'
+    a
+    ```
+
+    ```sh
+    $ cat << EOF > demo.txt
+    root:x:0:0:root:/root:/usr/bin/zsh
+    daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+    bin:x:2:2:bin:/bin:/usr/sbin/nologin
+    sys:x:3:3:sys:/dev:/usr/sbin/nologin
+    sync:x:4:65534:sync:/bin:/bin/sync
+    EOF
+
+    $ awk -F ':' '{ print $1 }' demo.txt
+    root
+    daemon
+    bin
+    sys
+    sync
+    ```
+
+1. 变量
+
+    `除了`$ + 数字`表示某个字段，awk还提供其他一些变量。
+
+    变量`NF`表示当前行有多少个字段，因此`$NF`就代表最后一个字段。
+
+    ```sh
+    $ echo 'this is a test' | awk '{print $NF}'
+    test
+    ```
+
+    `$(NF-1)`代表倒数第二个字段。
+
+    ```sh
+    $ awk -F ':' '{print $1, $(NF-1)}' demo.txt
+    root /root
+    daemon /usr/sbin
+    bin /bin
+    sys /dev
+    sync /bin
+    ```
+
+    上面代码中，print命令里面的逗号，表示输出的时候，两个部分之间使用空格分隔。
+
+    变量`NR`表示当前处理的是第几行。
+
+    ```sh
+    $ awk -F ':' '{print NR ") " $1}' demo.txt
+    1) root
+    2) daemon
+    3) bin
+    4) sys
+    5) sync
+    ```
+
+    上面代码中，print命令里面，如果原样输出字符，要放在双引号里面。
+
+    awk的其他内置变量如下。
+
+    - FILENAME：当前文件名
+    - FS：字段分隔符，默认是空格和制表符。
+    - RS：行分隔符，用于分割每一行，默认是换行符。
+    - OFS：输出字段的分隔符，用于打印时分隔字段，默认为空格。
+    - ORS：输出记录的分隔符，用于打印时分隔记录，默认为换行符。
+    - OFMT：数字输出的格式，默认为％.6g。`
+
+1. 函数
+
+    awk还提供了一些内置函数，方便对原始数据的处理。
+
+    函数toupper()用于将字符转为大写。
+
+    ```sh
+    $ awk -F ':' '{ print toupper($1) }' demo.txt
+    ROOT
+    DAEMON
+    BIN
+    SYS
+    SYNC
+    ```
+
+    上面代码中，第一个字段输出时都变成了大写。
+
+    其他常用函数如下。
+
+    ```sh
+    tolower()：字符转为小写。
+    length()：返回字符串长度。
+    substr()：返回子字符串。
+    sin()：正弦。
+    cos()：余弦。
+    sqrt()：平方根。
+    rand()：随机数。
+    ```
+
+1. 条件
+
+    awk允许指定输出条件，只输出符合条件的行。
+
+    输出条件要写在动作的前面。
+
+    ```sh
+    awk '条件 动作' 文件名
+    ```
+
+    请看下面的例子。
+
+    ```sh
+    $ awk -F ':' '/usr/ {print $1}' demo.txt
+    root
+    daemon
+    bin
+    sys
+    ```
+
+    上面代码中，print命令前面是一个正则表达式，只输出包含usr的行。
+
+    下面的例子只输出奇数行，以及输出第三行以后的行。
+
+    ```sh
+    # 输出奇数行
+    $ awk -F ':' 'NR % 2 == 1 {print $1}' demo.txt
+    root
+    bin
+    sync
+    ```
+
+    ```sh
+    # 输出第三行以后的行
+    $ awk -F ':' 'NR >3 {print $1}' demo.txt
+    sys
+    sync
+    ```
+
+    下面的例子输出第一个字段等于指定值的行。
+
+    ```sh
+    $ awk -F ':' '$1 == "root" {print $1}' demo.txt
+    root
+
+    $ awk -F ':' '$1 == "root" || $1 == "bin" {print $1}' demo.txt
+    root
+    bin
+    ```
+
+1. if语句
+
+    awk提供了`if`结构，用于编写复杂的条件。
+
+    ```sh
+    $ awk -F ':' '{if ($1 > "m") print $1}' demo.txt
+    root
+    sys
+    sync
+    ```
+
+    上面代码输出第一个字段的第一个字符大于m的行。
+
+    if结构还可以指定else部分。
+
+    ```sh
+    $ awk -F ':' '{if ($1 > "m") print $1; else print "---"}' demo.txt
+    root
+    ---
+    ---
+    sys
+    sync
+    ```
+
 ----
 
-### 站内相关连接
+## 站内相关连接
 
 - [curl 命令用法](/linux/2021/10/14/curl-command.html)
 - [用zsh增强shell](/shell/2021/09/20/shell-zsh.html)
+- [find命令](/linux/2021/12/30/linux-find-files.html)
 
 ----
 
-### 参考
+## 参考
 
 - [技巧1——怎样查看linux发行版本名称和版本号？](https://blog.csdn.net/ymeng9527/article/details/90483687)
 - [Linux发行版列表](https://zh.wikipedia.org/wiki/Linux%E5%8F%91%E8%A1%8C%E7%89%88%E5%88%97%E8%A1%A8)
+- [awk 入门教程](https://www.ruanyifeng.com/blog/2018/11/awk.html)

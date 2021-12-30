@@ -95,7 +95,13 @@ git config user.email "USER_B@example.com"
 
 ```sh
 git branch -r | awk -Forigin/ '/\/release/ {print $2}' | xargs -I {} git push origin :{}
+# 命令解释
+# awk -F 指定分隔符, /\release/, 只输出release开头的行
+# xargs -I 指定占位符 {}
+# git push origin :release-xxx 删除release-xxx分支
 ```
+
+如果private key有密码, 可能需要一次次输入, 通过启动ssh-agent, ssh-add, 添加私钥输入密码, 避免每次都输入密码, 参考[Adding your SSH key to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent)
 
 ## 参考
 
