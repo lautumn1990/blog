@@ -57,7 +57,7 @@ appendWindowsPath = false
 
 ## wsl访问代理
 
-WSL 每次启动的时候都会有不同的 IP 地址，所以并不能直接用静态的方式来设置代理。WSL2 会把 IP 写在 `/etc/resolv.conf` 中，因此可以用 `cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }'` 这条指令获得宿主机 IP 。
+WSL 每次启动的时候都会有不同的 IP 地址，所以并不能直接用静态的方式来设置代理(参考以下方式设置[静态ip](#wsl静态ip))。WSL2 会把 IP 写在 `/etc/resolv.conf` 中，因此可以用 `cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }'` 这条指令获得宿主机 IP 。
 
 WSL2 自己的 IP 可以用 `hostname -I | awk '{print $1}'` 得到。
 
@@ -195,6 +195,18 @@ hostname=WSL
 
 `HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Lxss`注册表地址
 
+## wsl服务重启
+
+```bat
+net stop LxssManager
+net start LxssManager
+
+sc stop LxssManager
+sc start LxssManager
+rem 查看服务
+sc query LxssManager
+```
+
 ## 安装其他wsl版本的linux系统
 
 [Project List Using wsldl](https://wsldl-pg.github.io/docs/Using-wsldl/)
@@ -224,8 +236,49 @@ processors=4
 swap=512MB  
 ```
 
+## wsl静态ip
+
+1. 创建脚本,在`/home/lautumn`下, 注意修改为自己的ip地址, 如果没用的话, 可直接使用
+
+   ```sh
+   cat <<EOF > static_ip.sh
+   #!/bin/bash
+
+   /sbin/ip addr flush dev eth0
+   /sbin/ip addr add 172.30.38.138/20 broadcast 172.30.47.255 dev eth0 label eth0
+   /mnt/c/Windows/System32/netsh.exe interface ipv4 add address "vEthernet (WSL)" 172.30.32.1 255.255.240.0
+   EOF
+   
+   chmod +x static_ip.sh
+   ```
+
+   如果`/mnt/c/Windows/System32/netsh.exe`在wsl中不能用, 取消自动挂载, 启动mountFsTab挂载
+
+   ```conf
+   [automount]
+   enabled = false
+   mountFsTab = true
+   ```
+
+   如果还要去除绿油油的一片的话, 修改`/etc/fstab`
+
+   ```sh
+   LABEL=cloudimg-rootfs   /        ext4   defaults        0 1
+   C: /mnt/c drvfs rw,relatime,uid=1000,gid=1000,fmask=111,umask=022,metadata,case=off 0 0
+   //localhost/C$/Windows/System32 /mnt/c/Windows/System32 drvfs defaults,ro,relatime,uid=1000,gid=1000,fmask=222,umask=222,case=off 0 0
+   D: /mnt/d drvfs rw,relatime,uid=1000,gid=1000,fmask=111,umask=022,metadata,case=off 0 0
+   ```
+
+1. windows启动目录`shell:startup`中添加脚本, `static-ip.vbs`, 内容如下
+
+   ```vb
+   Set ws = CreateObject("Wscript.Shell")
+   ws.run "wsl -d Ubuntu -u root /home/lautumn/static_ip.sh", vbhide
+   ```
+
 ## 参考
 
 - [wsl2 docker 迁移](https://www.cnblogs.com/xzhg/p/14959196.html)
 - [WSL2 中访问宿主机 Windows 的代理](https://zinglix.xyz/2020/04/18/wsl2-proxy)
 - [WSL 配置指北：打造 Windows 最强命令行](https://segmentfault.com/a/1190000016677670)
+- [drvfs fmask=111 breaks (e.g.) cmd.exe without workarounds?](https://github.com/microsoft/WSL/issues/3267#issuecomment-479414025)
