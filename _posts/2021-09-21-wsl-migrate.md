@@ -238,7 +238,7 @@ swap=512MB
 
 ## wsl静态ip
 
-1. 创建脚本,在`/home/lautumn`下, 注意修改为自己的ip地址, 如果没用的话, 可直接使用
+1. 创建脚本,在`/home/lautumn`下, 注意修改为自己的ip地址, 如果没特殊要求的话, 可直接使用, 其中wsl的ip地址为`172.30.38.138`, "vEthernet (WSL)"的ip地址为`172.30.32.1`
 
    ```sh
    cat <<EOF > static_ip.sh
@@ -246,6 +246,10 @@ swap=512MB
 
    /sbin/ip addr flush dev eth0
    /sbin/ip addr add 172.30.38.138/20 broadcast 172.30.47.255 dev eth0 label eth0
+   /sbin/route add default gw 172.30.32.1
+   echo nameserver 172.30.32.1 > /etc/resolv.conf
+   origin_host_wsl_ip=$(/mnt/c/Windows/System32/netsh.exe interface ipv4 show address  "vEthernet (WSL)" | grep IP | awk  '{print $3}')
+   /mnt/c/Windows/System32/netsh.exe interface ipv4 delete address "vEthernet (WSL)" ${origin_host_ip}
    /mnt/c/Windows/System32/netsh.exe interface ipv4 add address "vEthernet (WSL)" 172.30.32.1 255.255.240.0
    EOF
    
@@ -276,9 +280,73 @@ swap=512MB
    ws.run "wsl -d Ubuntu -u root /home/lautumn/static_ip.sh", vbhide
    ```
 
+   - 方式一, 由于`netsh.exe`需要管理员权限, 所以直接放到`启动`目录下不能用, 可以增加在`taskschd.msc`, 任务计划程序中, 添加任务, 勾选`使用最高权限运行`
+   - 方式二, 脚本前增加, 以下代码, 参考[How to run vbs as administrator from vbs?](https://stackoverflow.com/a/17467283)
+
+   ```vb
+   If Not WScript.Arguments.Named.Exists("elevate") Then
+   CreateObject("Shell.Application").ShellExecute WScript.FullName _
+       , """" & WScript.ScriptFullName & """ /elevate", "", "runas", 1
+   WScript.Quit
+   End If
+   'actual code
+   ```
+
+   如果此linux下的脚本不能用, 可使用windows下的脚本, 设置为`.bat`或`.cmd`格式, 管理员权限运行
+
+   ```bat
+   wsl -d Ubuntu -u root ip addr del $(ip addr show eth0 ^| grep 'inet\b' ^| awk '{print $2}' ^| head -n 1) dev eth0
+   wsl -d Ubuntu -u root ip addr add 172.30.38.138/20 broadcast 172.30.47.255 dev eth0
+   wsl -d Ubuntu -u root ip route add 0.0.0.0/0 via 172.30.32.1 dev eth0
+   wsl -d Ubuntu -u root echo nameserver 172.30.32.1 ^> /etc/resolv.conf
+   powershell -c "Get-NetAdapter 'vEthernet (WSL)' | Get-NetIPAddress | Remove-NetIPAddress -Confirm:$False; New-NetIPAddress -IPAddress 172.30.32.1 -PrefixLength 20 -InterfaceAlias 'vEthernet (WSL)'; Get-NetNat | ? Name -Eq WSLNat | Remove-NetNat -Confirm:$False; New-NetNat -Name WSLNat -InternalIPInterfaceAddressPrefix 172.30.32.0/20;"
+   ```
+
+## 脚本管理员权限
+
+- bat文件, 参考[怎样自动以管理员身份运行bat文件? - 墨子 2200MHz的回答 - 知乎](https://www.zhihu.com/question/34541107/answer/137174053)
+
+  ```bat
+  @echo off
+  cd /d "%~dp0"
+  cacls.exe "%SystemDrive%\System Volume Information" >nul 2>nul
+  if %errorlevel%==0 goto Admin
+  if exist "%temp%\getadmin.vbs" del /f /q "%temp%\getadmin.vbs"
+  echo Set RequestUAC = CreateObject^("Shell.Application"^)>"%temp%\getadmin.vbs"
+  echo RequestUAC.ShellExecute "%~s0","","","runas",1 >>"%temp%\getadmin.vbs"
+  echo WScript.Quit >>"%temp%\getadmin.vbs"
+  "%temp%\getadmin.vbs" /f
+  if exist "%temp%\getadmin.vbs" del /f /q "%temp%\getadmin.vbs"
+  exit
+  
+  :Admin
+  rem actual code
+  ```
+
+  一句命令版, 原理, 第一次`%1`为`""`, 第二次为`::`即注释, 为管理员权限, 适合没有参数的脚本
+
+  ```bat
+  %1 start "" mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c ""%~s0"" ::","","runas",1)(window.close)&&exit
+  ```
+
+- vbs文件, 参考[How to run vbs as administrator from vbs?](https://stackoverflow.com/a/17467283)
+
+  ```vb
+  If Not WScript.Arguments.Named.Exists("elevate") Then
+  CreateObject("Shell.Application").ShellExecute WScript.FullName _
+      , """" & WScript.ScriptFullName & """ /elevate", "", "runas", 1
+  WScript.Quit
+  End If
+  'actual code
+  ```
+
+----
+
 ## 参考
 
 - [wsl2 docker 迁移](https://www.cnblogs.com/xzhg/p/14959196.html)
 - [WSL2 中访问宿主机 Windows 的代理](https://zinglix.xyz/2020/04/18/wsl2-proxy)
 - [WSL 配置指北：打造 Windows 最强命令行](https://segmentfault.com/a/1190000016677670)
 - [drvfs fmask=111 breaks (e.g.) cmd.exe without workarounds?](https://github.com/microsoft/WSL/issues/3267#issuecomment-479414025)
+- [static ip](https://github.com/MicrosoftDocs/WSL/issues/418#issuecomment-776861181)
+- [给 WSL2 设置静态 IP 地址](https://zhuanlan.zhihu.com/p/380779630)
