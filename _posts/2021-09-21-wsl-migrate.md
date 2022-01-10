@@ -243,13 +243,16 @@ swap=512MB
    ```sh
    cat <<EOF > static_ip.sh
    #!/bin/bash
-
+   
+   # config wsl ip
    /sbin/ip addr flush dev eth0
    /sbin/ip addr add 172.30.38.138/20 broadcast 172.30.47.255 dev eth0 label eth0
    /sbin/route add default gw 172.30.32.1
-   echo nameserver 172.30.32.1 > /etc/resolv.conf
-   origin_host_wsl_ip=$(/mnt/c/Windows/System32/netsh.exe interface ipv4 show address  "vEthernet (WSL)" | grep IP | awk  '{print $3}')
-   /mnt/c/Windows/System32/netsh.exe interface ipv4 delete address "vEthernet (WSL)" ${origin_host_ip}
+   sed -i 's/nameserver.*/\n# this is replace by init script\nnameserver 172.30.32.1/' /etc/resolv.conf
+   
+   # config vEthernet (WSL) ip
+   ORIGIN_HOST_WSL_IP=\$(/mnt/c/Windows/System32/netsh.exe interface ipv4 show address  "vEthernet (WSL)" | grep IP | awk -v RS='\r\n' '{print \$3}')
+   echo \${ORIGIN_HOST_WSL_IP} | xargs -I {} /mnt/c/Windows/System32/netsh.exe interface ipv4 delete address "vEthernet (WSL)" {}
    /mnt/c/Windows/System32/netsh.exe interface ipv4 add address "vEthernet (WSL)" 172.30.32.1 255.255.240.0
    EOF
    
@@ -327,6 +330,7 @@ swap=512MB
 
   ```bat
   %1 start "" mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c ""%~s0"" ::","","runas",1)(window.close)&&exit
+  rem actual code
   ```
 
 - vbs文件, 参考[How to run vbs as administrator from vbs?](https://stackoverflow.com/a/17467283)
