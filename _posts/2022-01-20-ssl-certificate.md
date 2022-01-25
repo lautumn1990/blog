@@ -246,3 +246,4 @@ openssl asn1parse -in asn1.demo.der -inform der
 - [使用 openssl 生成证书](https://www.cnblogs.com/littleatp/p/5878763.html)
 - [X.509系列（一）：X.509 v3格式下的证书](https://www.jianshu.com/p/d120204cc06a)
 - [X.509系列（二）：ASN.1编解码标准X.690](https://www.jianshu.com/p/81e6e73b5c81)
+- [Sign and verify text/files to public keys via the OpenSSL Command Line](https://raymii.org/s/tutorials/Sign_and_verify_text_files_to_public_keys_via_the_OpenSSL_Command_Line.html)
