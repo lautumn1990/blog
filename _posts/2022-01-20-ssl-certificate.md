@@ -155,7 +155,7 @@ openssl x509 -noout -text -in my.crt.pem
 证书格式转换
 
 - PEM
-  - 最常用的格式, base64编码, 在 "-----BEGIN CERTIFICATE-----" 和 "-----END CERTIFICATE-----" 中间
+  - 最常用的格式, base64编码, 在 `-----BEGIN CERTIFICATE-----` 和 `-----END CERTIFICATE-----` 中间
   - 常用后缀`.pem`, `.crt`, `.cer` 和 `.key`
   - 常用作Apache服务的证书
 - DER
@@ -163,7 +163,7 @@ openssl x509 -noout -text -in my.crt.pem
   - 常用后缀`.der`,`.cer`
   - 常用作java服务器的证书
 - PKCS#7 AND P7B FORMAT
-  - pem格式, base64编码, 在 "-----BEGIN PKCS7-----" 和 "-----END PKCS7-----" 中间
+  - pem格式, base64编码, 在 `-----BEGIN PKCS7-----` 和 `-----END PKCS7-----` 中间
   - P7B文件仅包含证书和链证书，而不包含私钥
   - 常用后缀`.p7b`,`.p7c`
   - 常用作Microsoft windows 和 Java Tomcat证书
