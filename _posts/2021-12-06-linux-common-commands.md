@@ -342,6 +342,21 @@ linux常用命令(持续更新)
   apt install telnet
   ```
 
+## 其他命令
+
+- 查看软件安装时间
+  - ubuntu
+
+    ```sh
+    zcat /var/log/apt/history.log.*.gz | cat - /var/log/apt/history.log | grep " install " -C 5
+    ```
+
+  - centos
+
+    ```sh
+    rpm -qa --last
+    ```
+
 ----
 
 ## 站内相关连接
