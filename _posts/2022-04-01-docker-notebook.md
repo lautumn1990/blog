@@ -12,13 +12,15 @@ pageview: true
 
 通过docker安装, 5 用户以下免费使用
 
-首次使用
+## 安装
+
+### 首次使用
 
 ```sh
 docker run --name wiz --restart=always -it -d -v  ~/wizdata:/wiz/storage -v  /etc/localtime:/etc/localtime -p 80:80 -p 9269:9269/udp  wiznote/wizserver
 ```
 
-更新
+### 更新
 
 ```sh
 docker stop wiz
@@ -27,6 +29,8 @@ docker pull wiznote/wizserver:latest
 docker run --name wiz --restart=always -it -d -v  ~/wizdata:/wiz/storage -v  /etc/localtime:/etc/localtime -p 80:80 -p 9269:9269/udp  wiznote/wizserver
 ```
 
+### 镜像下载失败
+
 使用阿里云镜像可能会出现版本滞后的情况, 这时可以手动拉取, 然后打tag的方式
 
 ```sh
@@ -34,7 +38,9 @@ docker pull registry.hub.docker.com/wiznote/wizserver:latest
 docker tag registry.hub.docker.com/wiznote/wizserver:latest wiznote/wizserver:latest
 ```
 
-nginx配置
+## nginx
+
+### nginx配置
 
 ```conf
 server {
@@ -50,7 +56,7 @@ server {
 }
 ```
 
-nginx跳转 http跳转到https
+### http跳转到https
 
 ```conf
 server {
@@ -63,12 +69,12 @@ server {
 }
 ```
 
-账户设置
+## 账户设置
 
 - 默认管理员账号`admin@wiz.cn`, 密码`123456`
 - 新注册用户, 并禁用管理帐号
 
-docker-compose
+## docker-compose
 
 ```yaml
 version: '3.1'
