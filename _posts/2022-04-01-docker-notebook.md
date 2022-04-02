@@ -91,7 +91,7 @@ services:
     restart: always
 ```
 
-## 安装leanote笔记本
+## 安装leanote笔记, 蚂蚁笔记
 
 参考[leanote-docker](https://github.com/leanote/leanote-docker)
 
