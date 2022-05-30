@@ -177,6 +177,12 @@ mountFsTab = true
 >
 >添加可执行权限
 >
+>或者直接
+>
+>```sh
+>chmod +x /mnt/c/Users/*/.vscode/extensions/ms-vscode-remote.remote-wsl*/scripts/*.sh
+>```
+>
 >参考
 >
 >- [Support WSL mount options with vscode remote](https://github.com/microsoft/vscode-remote-release/issues/2126)
