@@ -58,9 +58,33 @@ WHERE
 ORDER BY created_at
 ```
 
+## grafana 批量下载图片
+
+```sh
+#!/bin/bash
+
+HOST='http://localhost:3000'
+KEY="<add-valid-key>"
+DIR="grafana_dashboards"
+
+# Iterate through dashboards using the current API Key
+for dashboard_uid in $(curl -sS -H "Authorization: Bearer $KEY" $HOST/api/search\?query\=\& | jq -r '.[] | select( .type | contains("dash-db")) | .uid'); do
+    url=$(echo $HOST/api/dashboards/uid/$dashboard_uid | tr -d '\r')
+    dashboard_json=$(curl -sS -H "Authorization: Bearer $KEY" $url)
+    dashboard_title=$(echo $dashboard_json | jq -r '.dashboard | .title' | sed -r 's/[ \/]+/_/g')
+    dashboard_version=$(echo $dashboard_json | jq -r '.dashboard | .version')
+    folder_title="$(echo $dashboard_json | jq -r '.meta | .folderTitle')"
+
+    echo "Creating: ${DIR}/${folder_title}/${dashboard_title}_v${dashboard_version}.json"
+    mkdir -p "${DIR}/${folder_title}"
+    echo ${dashboard_json} | jq -r {meta:.meta}+.dashboard > "${DIR}/${folder_title}/${dashboard_title}_v${dashboard_version}.json"
+done
+```
+
 ----
 
 ## 参考
 
 - [Reset admin password grafana docker](https://community.victronenergy.com/questions/73260/reset-admin-password-grafana-docker.html)
 - [grafana 安装与 mysql 时区](https://codeantenna.com/index.php/a/R1qBLO2mYn)
+- [Export Grafana dashboard via API](https://stackoverflow.com/a/70853238/9304033)
