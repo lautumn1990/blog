@@ -99,7 +99,7 @@ pageview: true
 
 文本选择
 
-| Function             | Command                                  |
+| Command              | Function                                 |
 | -------------------- | ---------------------------------------- |
 | SHIFT + LEFT         | 将光标向左移动一个字符，扩展所选内容     |
 | SHIFT + RIGHT        | 将光标向右移动一个字符，扩展所选内容     |
@@ -117,7 +117,7 @@ pageview: true
 
 ### 编辑命令
 
-| Function    | Command                                    |
+| Command     | Function                                   |
 | ----------- | ------------------------------------------ |
 | Windows + V | 打开剪贴板历史                             |
 | CTRL + V    | 粘贴                                       |
@@ -133,7 +133,7 @@ pageview: true
 
 ### 历史导航键
 
-| Function          | Command                      |
+| Command           | Function                     |
 | ----------------- | ---------------------------- |
 | CTRL + UP ARROW   | 在输出历史中向上移动一行     |
 | CTRL + DOWN ARROW | 在输出历史记录中向下移动一行 |
@@ -142,7 +142,7 @@ pageview: true
 
 ### 额外的命令
 
-| Function | Command                    |
+| Command  | Function                   |
 | -------- | -------------------------- |
 | CTRL + F | 在控制台对话框中打开“查找” |
 | ALT + F4 | 关闭控制台窗口!            |
@@ -285,9 +285,340 @@ pageview: true
 | wusa                                    | Windows Update Standalone Installer       |
 | wmimgmt.msc                             | WMI Management                            |
 | write                                   | 写字板                                    |
+| ms-settings:                            | 设置                                      |
+
+### 设置完整列表
+
+帐户
+
+| URI                                                   | "设置"页面         |
+| ----------------------------------------------------- | ------------------ |
+| ms-settings:workplace                                 | 访问工作单位或学校 |
+| ms-settings:emailandaccounts                          | 电子邮件和应用帐户 |
+| ms-settings:otherusers                                | 家人和其他人       |
+| ms-settings:assignedaccess                            | 设置展台           |
+| ms-settings:signinoptions                             | 登录选项           |
+| ms-settings:signinoptions-dynamiclock                 |                    |
+| ms-settings:sync                                      | 同步设置           |
+| ms-settings:signinoptions-launchfaceenrollment        | Windows Hello 设置 |
+| ms-settings:signinoptions-launchfingerprintenrollment |                    |
+| ms-settings:yourinfo                                  | 你的信息           |
+
+应用
+
+| URI                                                                    | "设置"页面   |
+| ---------------------------------------------------------------------- | ------------ |
+| ms-settings:appsfeatures                                               | 应用和功能   |
+| ms-settings:appsfeatures-app(应用的重置、管理加载项和可下载内容等操作) | 应用功能     |
+| ms-settings:appsforwebsites                                            | 网站应用     |
+| ms-settings:defaultapps                                                | 默认应用     |
+| ms-settings:optionalfeatures                                           | 管理可选功能 |
+| ms-settings:maps                                                       | 离线地图     |
+| ms-settings:maps-downloadmaps(下载地图)                                |              |
+| ms-settings:startupapps                                                | 启动应用     |
+| ms-settings:videoplayback                                              | 视频播放     |
+
+Cortana
+
+| URI                               | "设置"页面         |
+| --------------------------------- | ------------------ |
+| ms-settings:cortana-notifications | "跨设备的 Cortana" |
+| ms-settings:cortana-moredetails   | 更多详细信息       |
+| ms-settings:cortana-permissions   | 权限和历史记录     |
+| ms-settings:cortana-windowssearch | 搜索 Windows       |
+| ms-settings:cortana-language      | 与 Cortana 交谈    |
+| ms-settings:cortana               |                    |
+| ms-settings:cortana-talktocortana |                    |
+
+设备
+
+| URI                                                              | "设置"页面           |
+| ---------------------------------------------------------------- | -------------------- |
+| ms-settings:autoplay                                             | 自动播放             |
+| ms-settings:bluetooth                                            | Bluetooth            |
+| ms-settings:connecteddevices                                     | 连接的设备           |
+| ms-settings:camera(已在   Windows 10 版本 1809 及更高版本中弃用) | 默认相机             |
+| ms-settings:mousetouchpad(仅具有触摸板的设备可使用触摸板设置)    | 鼠标和触摸板         |
+| ms-settings:pen                                                  | 触控笔和 Windows Ink |
+| ms-settings:printers                                             | 打印机和扫描仪       |
+| ms-settings:devices-touch                                        | 触摸                 |
+| ms-settings:devices-touchpad(仅在存在触摸板硬件时可用)           | 触摸板               |
+| ms-settings:devicestyping-hwkbtextsuggestions                    | 文本建议             |
+| ms-settings:typing                                               | Typing               |
+| ms-settings:usb                                                  | USB                  |
+| ms-settings:wheel(仅在"拨号"配对成功后可用)                      | 滚轮                 |
+| ms-settings:mobile-devices                                       | 你的手机             |
+
+轻松访问
+
+| URI                                                    | "设置"页面      |
+| ------------------------------------------------------ | --------------- |
+| ms-settings:easeofaccess-audio                         | 音频            |
+| ms-settings:easeofaccess-closedcaptioning              | 隐藏式字幕      |
+| ms-settings:easeofaccess-colorfilter                   | 颜色筛选器      |
+| ms-settings:easeofaccess-colorfilter-adaptivecolorlink |                 |
+| ms-settings:easeofaccess-colorfilter-bluelightlink     |                 |
+| ms-settings:easeofaccess-display                       | 显示            |
+| ms-settings:easeofaccess-eyecontrol                    | 目视控制        |
+| ms-settings:fonts                                      | 字体            |
+| ms-settings:easeofaccess-highcontrast                  | 高对比度        |
+| ms-settings:easeofaccess-keyboard                      | Keyboard        |
+| ms-settings:easeofaccess-magnifier                     | 放大镜          |
+| ms-settings:easeofaccess-mouse                         | 鼠标            |
+| ms-settings: easeofaccess-mousepointer                 | 鼠标指针 & 触摸 |
+| ms-settings:easeofaccess-narrator                      | 讲述人          |
+| ms-settings:easeofaccess-narrator-isautostartenabled   |                 |
+| ms-settings:easeofaccess-speechrecognition             | 语音            |
+| ms-settings: easeofaccess-cursor                       | 文本光标        |
+| ms-settings:easeofaccess-visualeffects                 | 视觉效果        |
+
+附加信息
+
+| URI                                                                    | "设置"页面 |
+| ---------------------------------------------------------------------- | ---------- |
+| ms-settings:extras(仅在通过某种方式(例如第三方)安装了"设置应用"后可用) | 附加信息   |
+
+游戏
+
+| URI                                         | "设置"页面 |
+| ------------------------------------------- | ---------- |
+| ms-settings:gaming-gamebar                  | 游戏栏     |
+| ms-settings:gaming-gamedvr                  | 游戏 DVR   |
+| ms-settings:gaming-gamemode                 | 游戏模式   |
+| ms-settings:quietmomentsgame                | 全屏玩游戏 |
+| ms-settings:gaming-trueplay(1809删除此功能) | TruePlay   |
+
+主页
+
+| URI                                | "设置"页面     |
+| ---------------------------------- | -------------- |
+| ms-settings:defaultbrowsersettings | 默认浏览器设置 |
+
+混合现实
+
+| URI                                         | "设置"页面       |
+| ------------------------------------------- | ---------------- |
+| ms-settings:holographic-audio               | 音频和语音       |
+| ms-settings:privacy-holographic-environment | 环境             |
+| ms-settings:holographic-headset             | 头戴显示设备显示 |
+| ms-settings:holographic-management          | 卸载             |
+| ms-settings:holographic-startupandesktop    | 启动和桌面       |
+
+网络和 Internet
+
+| URI                                                              | "设置"页面        |
+| ---------------------------------------------------------------- | ----------------- |
+| ms-settings:network-advancedsettings                             | 高级设置          |
+| ms-settings:network-airplanemode                                 | 飞行模式          |
+| ms-settings:proximity                                            |                   |
+| ms-settings:network-cellular                                     | 手机网络和 SIM 卡 |
+| ms-settings:network-dialup                                       | 拨号              |
+| ms-settings:network-directaccess(仅在启用   DirectAccess 后可用) | DirectAccess      |
+| ms-settings:network-ethernet                                     | 以太网            |
+| ms-settings:network-wifisettings                                 | 管理已知网络      |
+| ms-settings:network-mobilehotspot                                | 移动热点          |
+| ms-settings:network-proxy                                        | 代理              |
+| ms-settings:network-vpn                                          | VPN               |
+| ms-settings:network-wifi(仅当设备具有   WLAN 适配器时可用)       | WLAN              |
+| ms-settings:wifi-provisioning                                    | Wi-Fi 预配        |
+
+个性化
+
+| URI                                             | "设置"页面                       |
+| ----------------------------------------------- | -------------------------------- |
+| ms-settings:personalization-background          | 背景                             |
+| ms-settings:personalization-start-places        | 选择哪些文件夹显示在"开始"菜单上 |
+| ms-settings:personalization-colors              | 颜色                             |
+| ms-settings:colors                              |                                  |
+| ms-settings:personalization-glance(1809 中弃用) | 概览                             |
+| ms-settings:lockscreen                          | 锁屏界面                         |
+| ms-settings:personalization-navbar(1809 中弃用) | 导航栏                           |
+| ms-settings:personalization                     | 个性化(类别)                     |
+| ms-settings:personalization-start               | 开始                             |
+| ms-settings:taskbar                             | 任务栏                           |
+| ms-settings:personalization-touchkeyboard       | 触摸键盘                         |
+| ms-settings:themes                              | 主题                             |
+
+电话
+
+| URI                                                            | "设置"页面   |
+| -------------------------------------------------------------- | ------------ |
+| ms-settings:mobile-devices                                     | 你的手机     |
+| ms-settings:mobile-devices-addphone                            |              |
+| ms-settings:mobile-devices-addphone-direct(打开"你的手机"应用) |              |
+| ms-settings:deviceusage                                        | 设备使用情况 |
+
+隐私
+
+| URI                                                  | "设置"页面   |
+| ---------------------------------------------------- | ------------ |
+| ms-settings:privacy-accessoryapps(1809 中弃用)       | 外部设备应用 |
+| ms-settings:privacy-accountinfo                      | 帐户信息     |
+| ms-settings:privacy-activityhistory                  | 活动历史记录 |
+| ms-settings:privacy-advertisingid(1809 中弃用)       | 广告 ID      |
+| ms-settings:privacy-appdiagnostics                   | 应用诊断     |
+| ms-settings:privacy-automaticfiledownloads           | 自动文件下载 |
+| ms-settings:privacy-backgroundapps                   | 后台应用     |
+| ms-settings:privacy-backgroundspatialperception      | 后台空间感知 |
+| ms-settings:privacy-calendar                         | 日历         |
+| ms-settings:privacy-callhistory                      | 呼叫历史记录 |
+| ms-settings:privacy-webcam                           | 照相机       |
+| ms-settings:privacy-contacts                         | 联系人       |
+| ms-settings:privacy-documents                        | Documents    |
+| ms-settings:privacy-downloadsfolder                  | "下载"文件夹 |
+| ms-settings:privacy-email                            | 电子邮件     |
+| ms-settings:privacy-eyetracker(需要眼球跟踪器硬件)   | 眼球跟踪器   |
+| ms-settings:privacy-feedback                         | 反馈和诊断   |
+| ms-settings:privacy-broadfilesystemaccess            | 文件系统     |
+| ms-settings:privacy   或 ms-settings:privacy-general | 常规         |
+| ms-settings:privacy-graphicscaptureprogrammatic      | 显卡         |
+| ms-settings:privacy-graphicscapturewithoutborder     |              |
+| ms-settings:privacy-speechtyping                     | &            |
+| ms-settings:privacy-location                         | 位置         |
+| ms-settings:privacy-messaging                        | Messaging    |
+| ms-settings:privacy-microphone                       | 麦克风       |
+| ms-settings:privacy-motion                           | 移动         |
+| ms-settings:privacy-musiclibrary                     | 音乐库       |
+| ms-settings:privacy-notifications                    | 通知         |
+| ms-settings:privacy-customdevices                    | 其他设备     |
+| ms-settings:privacy-phonecalls                       | 电话呼叫     |
+| ms-settings:privacy-pictures                         | 图片         |
+| ms-settings:privacy-radios                           | 无线电收发器 |
+| ms-settings:privacy-speech                           | 语音         |
+| ms-settings:privacy-tasks                            | 任务         |
+| ms-settings:privacy-videos                           | 视频         |
+| ms-settings:privacy-voiceactivation                  | 语音激活     |
+
+Surface Hub
+
+| URI                                     | "设置"页面   |
+| --------------------------------------- | ------------ |
+| ms-settings:surfacehub-accounts         | 帐户         |
+| ms-settings:surfacehub-sessioncleanup   | 会话清理     |
+| ms-settings:surfacehub-calling          | 团队会议     |
+| ms-settings:surfacehub-devicemanagenent | 团队设备管理 |
+| ms-settings:surfacehub-welcome          | 欢迎屏幕     |
+
+系统
+
+| URI                                                                         | "设置"页面           |
+| --------------------------------------------------------------------------- | -------------------- |
+| ms-settings:about                                                           | 关于                 |
+| ms-settings:display-advanced(仅适用于支持高级显示选项的设备)                | 高级显示设置         |
+| ms-settings:apps-volume(已在   Windows 10 版本 1903 中添加)                 | 应用音量和设备首选项 |
+| ms-settings:batterysaver(仅在具有电池的设备[如平板电脑]上可用)              | 节电模式             |
+| ms-settings:batterysaver-settings(仅在具有电池的设备[如平板电脑]上可用)     | "节电模式"设置       |
+| ms-settings:batterysaver-usagedetails(仅在具有电池的设备[如平板电脑]上可用) | 电池使用             |
+| ms-settings:clipboard                                                       | 剪贴板               |
+| ms-settings:display                                                         | 显示                 |
+| ms-settings:savelocations                                                   | 默认保存位置         |
+| ms-settings:screenrotation                                                  | 显示                 |
+| ms-settings:quietmomentspresentation                                        | 复制我的屏幕         |
+| ms-settings:quietmomentsscheduled                                           | 在这些时间内         |
+| ms-settings:deviceencryption                                                | 加密                 |
+| ms-settings:quiethours                                                      | 专注助手             |
+| ms-settings:display-advancedgraphics(仅适用于支持高级图形选项的设备)        | 图形设置             |
+| ms-settings:display-advancedgraphics-default                                | 图形默认设置         |
+| ms-settings:multitasking                                                    | 多任务               |
+| ms-settings:multitasking-sgupdate                                           |                      |
+| ms-settings:nightlight                                                      | 夜灯设置             |
+| ms-settings:project                                                         | 投影到这台电脑       |
+| ms-settings:crossdevice                                                     | 共享体验             |
+| ms-settings:tabletmode(已在   Windows 11 中删除)                            | 平板模式             |
+| ms-settings:taskbar                                                         | 任务栏               |
+| ms-settings:notifications                                                   | 通知和操作           |
+| ms-settings:remotedesktop                                                   | 远程桌面             |
+| ms-settings:phone(已在   Windows 10 版本 1809 及更高版本中弃用)             | 电话                 |
+| ms-settings:powersleep                                                      | 电源和睡眠           |
+| ms-settings:sound                                                           | 声音                 |
+| ms-settings:sound-devices                                                   | 声音设备             |
+| ms-settings:storagesense                                                    | 存储                 |
+| ms-settings:storagepolicies                                                 | 存储感知             |
+| ms-settings:storagerecommendations                                          | 有关存储的建议       |
+
+时间和语言
+
+| URI                                                                                       | "设置"页面     |
+| ----------------------------------------------------------------------------------------- | -------------- |
+| ms-settings:dateandtime                                                                   | 日期和时间     |
+| ms-settings:regionlanguage-jpnime(在安装了   Microsoft 日本输入法编辑器的情况下可用)      | 日本输入法设置 |
+| ms-settings:regionformatting                                                              | 区域           |
+| ms-settings:keyboard                                                                      | 语言           |
+| ms-settings:keyboard-advanced                                                             |                |
+| ms-settings:regionlanguage                                                                |                |
+| ms-settings:regionlanguage-bpmfime                                                        |                |
+| ms-settings:regionlanguage-cangjieime                                                     |                |
+| ms-settings:regionlanguage-chsime-wubi-udp                                                |                |
+| ms-settings:regionlanguage-quickime                                                       |                |
+| ms-settings:regionlanguage-korime                                                         |                |
+| ms-settings: regionlanguage-chsime-pinyin   (如果安装 Microsoft Pinyin 输入法编辑器)      | 拼音输入法设置 |
+| ms-settings: regionlanguage-chsime-pinyin-domainlexicon                                   |                |
+| ms-settings:regionlanguage-chsime-pinyin-keyconfig                                        |                |
+| ms-settings:regionlanguage-chsime-pinyin-udp                                              |                |
+| ms-settings:speech                                                                        | 语音           |
+| ms-settings:regionlanguage-chsime-wubi(在安装了   Microsoft 五笔输入法编辑器的情况下可用) | 五笔输入法设置 |
+| ms-settings:regionlanguage-adddisplaylanguage                                             | 添加显示语言   |
+| ms-settings:regionlanguage-languageoptions                                                | 语言选项       |
+| ms-settings:regionlanguage-setdisplaylanguage                                             | 设置显示语言   |
+
+更新和安全
+
+| URI                                                       | "设置"页面                      |
+| --------------------------------------------------------- | ------------------------------- |
+| ms-settings:activation                                    | 激活                            |
+| ms-settings:backup                                        | 备份                            |
+| ms-settings:delivery-optimization                         | 传递优化                        |
+| ms-settings:delivery-optimization-activity                |                                 |
+| ms-settings:delivery-optimization-advanced                |                                 |
+| ms-settings:findmydevice                                  | 查找我的设备                    |
+| ms-settings:developers                                    | 面向开发人员                    |
+| ms-settings:recovery                                      | 恢复                            |
+| ms-settings:signinoptions-launchsecuritykeyenrollment     | 启动安全密钥注册                |
+| ms-settings:troubleshoot                                  | 疑难解答                        |
+| ms-settings:windowsdefender                               | Windows 安全性                  |
+| ms-settings:windowsinsider(仅当用户在   WIP 中注册时显示) | Windows 预览体验计划            |
+| ms-settings:windowsinsider-optin                          |                                 |
+| ms-settings:windowsupdate                                 | Windows 更新                    |
+| ms-settings:windowsupdate-action                          |                                 |
+| ms-settings:windowsupdate-activehours                     | Windows 更新-活动小时数         |
+| ms-settings:windowsupdate-options                         | Windows 更新 - 高级选项         |
+| ms-settings:windowsupdate-optionalupdates                 | Windows 更新-可选更新           |
+| ms-settings:windowsupdate-restartoptions                  | Windows 更新 - 重启选项         |
+| ms-settings:windowsupdate-seekerondemand                  | Windows 更新-按需查找器         |
+| ms-settings:windowsupdate-history                         | Windows 更新 - 查看更新历史记录 |
+
+用户帐户
+
+| URI                                                                      | "设置"页面       |
+| ------------------------------------------------------------------------ | ---------------- |
+| ms-settings:workplace-provisioning(仅在企业部署了预配包后可用)           | 设置             |
+| ms-settings:workplace-repairtoken                                        | 修复令牌         |
+| ms-settings:workplace-provisioning(仅在移动设备和企业部署了预配包后可用) | 设置             |
+| ms-settings:windowsanywhere(设备必须支持   Windows Anywhere)             | Windows Anywhere |
+
+控制中心
+
+| URI                       | "设置"页面 |
+| ------------------------- | ---------- |
+| ms-settings:controlcenter | 控制中心   |
+
+家庭组
+
+| URI                      | "设置"页面 |
+| ------------------------ | ---------- |
+| ms-settings:family-group | 家庭组     |
+
+搜索
+
+| URI                            | "设置"页面       |
+| ------------------------------ | ---------------- |
+| ms-settings:search             | 搜索             |
+| ms-settings:search-moredetails | 搜索更多详细信息 |
+| ms-settings:search-permissions | 搜索权限         |
 
 ----
 
 ## 参考
 
 - [Complete List of Windows 10 Keyboard Shortcuts and Run Commands](https://www.groovypost.com/howto/windows-10-keyboard-shortcuts/)
+- [启动 Windows 设置应用](https://docs.microsoft.com/zh-cn/windows/uwp/launch-resume/launch-settings-app)
