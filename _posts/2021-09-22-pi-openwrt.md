@@ -12,9 +12,11 @@ pageview: true
 
 <!--more-->
 
-- 打开网络混杂模式
+### 打开网络混杂模式
 
 `sudo ip link set eth0 promisc on`
+
+### 通过docker安装
 
 - 创建网络, 结合自己的网络情况, 一定要使用有线网卡`eth0`{:.info}
 
@@ -30,30 +32,32 @@ pageview: true
 
 - 进入容器并修改相关参数
 
-进入容器
-`docker exec -it openwrt bash`
-修改网络
-`vim /etc/config/network`, 将以下配置中的123, 改为实际的网段和ip地址
+  进入容器
+  `docker exec -it openwrt bash`
+  修改网络
+  `vim /etc/config/network`, 将以下配置中的123, 改为实际的网段和ip地址
 
-```config
-config interface 'lan'
-        option type 'bridge'
-        option ifname 'eth0'
-        option proto 'static'
-        option ipaddr '192.168.123.100'
-        option netmask '255.255.255.0'
-        option ip6assign '60'
-        option gateway '192.168.123.1'
-        option broadcast '192.168.123.255'
-        option dns '192.168.123.1'
-```
+  ```config
+  config interface 'lan'
+          option type 'bridge'
+          option ifname 'eth0'
+          option proto 'static'
+          option ipaddr '192.168.123.100'
+          option netmask '255.255.255.0'
+          option ip6assign '60'
+          option gateway '192.168.123.1'
+          option broadcast '192.168.123.255'
+          option dns '192.168.123.1'
+  ```
 
-重启网络
-`/etc/init.d/network restart`
+  重启网络
+  `/etc/init.d/network restart`
+
+### 进行设置
 
 - 进入控制面板
 
-自定义的ip地址, 端口80, 帐号 root/password
+自定义的ip地址, 端口80, 帐号 `root`/`password`
 
 - 关闭dhcp
 
@@ -71,6 +75,12 @@ config interface 'lan'
 
 其他设备重新连接路由器, 获取新的网关地址
 
+- 配置防火墙
+
+镜像中的防火墙配置可能有问题, 通过注释掉网络 - 防火墙 - 自定义规则中的 `iptables -t nat -I POSTROUTING -j MASQUERADE`{:.success}, 可能会正常
+
+### 科学上网
+
 - 配置科学上网
 
 通过服务passwall的配置, 配置订阅地址, 自动更新, 上网规则等设置
@@ -79,11 +89,102 @@ config interface 'lan'
 
 备份规则`docker cp openwrt:/etc/config/passwall passwall.backup`, 不过可能版本之间不兼容
 
-- 配置防火墙
+## 配置持久化
 
-镜像中的防火墙配置可能有问题, 通过注释掉网络 - 防火墙 - 自定义规则中的 `iptables -t nat -I POSTROUTING -j MASQUERADE`{:.success}, 可能会正常
+以上很多设置不能在重启后复用, 或者不能在升级后重复使用, 参考一下配置
 
-- 持久化开启promisc混合模式, 创建macvlan访问openwrt
+### 使用`docker-compose`
+
+参考以下配置, 或下载[示例文件](/assets/sources/2021/09/openwrt.zip), `unzip openwrt.zip -d ./openwrt; cd openwrt`
+
+创建`Dockerfile`
+
+```dockerfile
+FROM sulinggg/openwrt:latest
+RUN echo "export TERM=xterm-256color" >> ~/.zshrc
+COPY ./initconfig/ /etc/
+```
+
+创建`initconfig`文件夹, 创建`initconfig/config/network`, 修改成自定义的ip地址
+
+```sh
+config interface 'loopback'
+        option ifname 'lo'
+        option proto 'static'
+        option ipaddr '127.0.0.1'
+        option netmask '255.0.0.0'
+
+config globals 'globals'
+
+config interface 'lan'
+        option type 'bridge'
+        option ifname 'eth0'
+        option proto 'static'
+        option netmask '255.255.255.0'
+        option ip6assign '60'
+        option ipaddr '192.168.0.201'
+        option gateway '192.168.0.1'
+        option dns '192.168.0.1'
+
+config interface 'vpn0'
+        option ifname 'tun0'
+        option proto 'none'
+```
+
+创建`initconfig/firewall.user`
+
+```sh
+# This file is interpreted as shell script.
+# Put your custom iptables rules here, they will
+# be executed with each firewall (re-)start.
+
+# Internal uci firewall chains are flushed and recreated on reload, so
+# put custom rules into the root chains e.g. INPUT or FORWARD or into the
+# special user chains, e.g. input_wan_rule or postrouting_lan_rule.
+iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53
+iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 53
+```
+
+创建`docker-compose.yml`
+
+```yaml
+version: "2"
+
+# see https://forums.docker.com/t/how-do-i-attach-a-macvlan-network-and-assign-a-static-ip-address-in-compose-file/107419
+services:
+  openwrt:
+    image: my-openwrt
+    container_name: openwrt
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data/passwall/rules:/usr/share/passwall/rules
+      - ./data/config:/etc/config
+      - ./data/xray:/usr/share/xray/
+    entrypoint: /sbin/init
+    privileged: true
+    networks:
+      macnet:
+        ipv4_address: 192.168.0.201
+
+networks:
+  macnet:
+    driver: macvlan
+    driver_opts:
+      parent: eth0
+    ipam:
+      config:
+        - subnet: "192.168.0.0/24"
+          gateway: "192.168.0.1"
+```
+
+使用`docker-compose up -d`启动
+
+### 持久化开启promisc混合模式
+
+#### centos持久化promisc混合模式
 
 备份
 
@@ -109,30 +210,32 @@ iface macvlan inet static
     post-down ip link del macvlan link eth0 type macvlan mode bridge
 ```
 
-ubuntu20.04, 请使用以下方法
-{:.info}
+#### ubuntu持久化promisc混合模式
 
 可以通过service服务的方式自动开启`promisc`, 参考[askubuntu中的回答](https://askubuntu.com/a/1356228/1386748)
 
 ```shell
-    $ sudo bash -c 'cat > /etc/systemd/system/bridge-promisc.service' <<'EOS'
-    [Unit]
-    Description=Makes interfaces run in promiscuous mode at boot
-    After=network-online.target
+$ sudo bash -c 'cat > /etc/systemd/system/bridge-promisc.service' <<'EOS'
+[Unit]
+Description=Makes interfaces run in promiscuous mode at boot
+After=network-online.target
 
-    [Service]
-    Type=oneshot
-    ExecStart=/usr/sbin/ip link set dev eth0 promisc on
-    TimeoutStartSec=0
-    RemainAfterExit=yes
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/ip link set dev eth0 promisc on
+TimeoutStartSec=0
+RemainAfterExit=yes
 
-    [Install]
-    WantedBy=default.target
-    EOS
-    $ sudo systemctl enable bridge-promisc
+[Install]
+WantedBy=default.target
+EOS
+$ sudo systemctl enable bridge-promisc
 ```
 
-访问macvlan, 临时方案
+### 访问macvlan
+
+宿主机有可能无法上网, 或者无法访问docker中的openwrt
+
 参考[docker openwrt 踩坑的几个小问题解决过程分享](https://www.right.com.cn/forum/thread-1048535-1-1.html)
 
 ```shell
@@ -147,7 +250,27 @@ ip route add 192.168.123.0/24 dev macvlan; \
 ip route add default via 192.168.123.6 dev macvlan;
 ```
 
-ubuntu持久化
+#### centos持久化macvlan访问
+
+修改`/etc/network/interfaces`文件
+
+```sh
+auto eth0
+iface eth0 inet manual
+
+auto macvlan
+iface macvlan inet static
+  address 192.168.123.2
+  netmask 255.255.255.0
+  gateway 192.168.123.6
+  dns-nameservers 192.168.123.6
+  pre-up ip link add macvlan link eth0 type macvlan mode bridge
+  post-down ip link del macvlan link eth0 type macvlan mode bridge
+
+# 其中192.168.123.0为网段，192.168.123.2为armbian地址，192.168.123.6为docker op地址
+```
+
+#### ubuntu持久化macvlan访问
 
 参考[netplan Support macvlan/macvtap interfaces](https://bugs.launchpad.net/netplan/+bug/1664847/comments/19)
 
@@ -182,6 +305,9 @@ network:
             routes:
                 - to: 0.0.0.0/0
                   via: 192.168.0.1
+                  metric: 0
+                - to: 192.168.0.201/32
+                  via: 0.0.0.0
                   metric: 0
 ```
 
