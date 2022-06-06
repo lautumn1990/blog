@@ -616,6 +616,124 @@ Surface Hub
 | ms-settings:search-moredetails | 搜索更多详细信息 |
 | ms-settings:search-permissions | 搜索权限         |
 
+### 环境变量
+
+为操作系统和每个用户的上下文处理的变量
+
+可以在.xml文件context=UserAndSystem的各节中使用这些变量， context=User``context=System
+
+| 变量                          | 说明                                                                                                                                         |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| ALLUSERSAPPDATA               | 与 CSIDL_COMMON_APPDATA相同。                                                                                                                |
+| ALLUSERSPROFILE               | 指 %PROFILESFOLDER%\Public 或 %PROFILESFOLDER%\所有用户。                                                                                    |
+| COMMONPROGRAMFILES            | 与 CSIDL_PROGRAM_FILES_COMMON相同。                                                                                                          |
+| COMMONPROGRAMFILES (X86)      | 指 64 位系统上的 C:\Program Files (x86) \Common Files 文件夹。                                                                               |
+| CSIDL_COMMON_ADMINTOOLS       | 版本 10.0。 包含计算机所有用户的管理工具的文件系统目录。                                                                                     |
+| CSIDL_COMMON_ALTSTARTUP       | 对应于所有用户的非本地化启动程序组的文件系统目录。                                                                                           |
+| CSIDL_COMMON_APPDATA          | 包含所有用户的应用程序数据的文件系统目录。 典型的路径Windows为 C:\ProgramData。                                                              |
+| CSIDL_COMMON_DESKTOPDIRECTORY | 文件系统目录，其中包含所有用户在桌面上显示的文件和文件夹。 XP 路径是 C:\Documents and Settings\All Users\Desktop。                           |
+| ---                           | 典型的路径是 C:\Users\Public\Desktop。                                                                                                       |
+| CSIDL_COMMON_DOCUMENTS        | 文件系统目录，其中包含所有用户通用的文档。 XP 中的典型路径是 C:\Documents and Settings\All Users\Documents。                                 |
+| ---                           | 典型的路径是 C:\Users\Public\Documents。                                                                                                     |
+| CSIDL_COMMON_FAVORITES        | 作为所有用户常用收藏夹的常用存储库的文件系统目录。 典型的路径是 C:\Users\Public\Favorites。                                                  |
+| CSIDL_COMMON_MUSIC            | 作为所有用户通用音乐文件的存储库的文件系统目录。 典型的路径是 C:\Users\Public\音乐。                                                         |
+| CSIDL_COMMON_PICTURES         | 文件系统目录，用作所有用户通用的映像文件的存储库。 典型的路径是 C:\Users\Public\Pictures。                                                   |
+| CSIDL_COMMON_PROGRAMS         | 文件系统目录，其中包含所有用户在 “开始” 菜单上显示的常见程序组的目录。 典型的路径是 C:\ProgramData\Microsoft\Windows\Start Menu\Programs。   |
+| CSIDL_COMMON_STARTMENU        | 文件系统目录，其中包含显示在所有用户的 “开始” 菜单上的程序和文件夹。 Windows中的典型路径是 C:\ProgramData\Microsoft\Windows\Start Menu。     |
+| CSIDL_COMMON_STARTUP          | 文件系统目录，其中包含所有用户的启动文件夹中显示的程序。 XP 中的典型路径是 C:\Documents and Settings\All Users\Start Menu\Programs\Startup。 |
+| ---                           | win7典型的路径是 C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup。                                                              |
+| CSIDL_COMMON_TEMPLATES        | 包含可供所有用户使用的模板的文件系统目录。 典型的路径是 C:\ProgramData\Microsoft\Windows\Templates。                                         |
+| CSIDL_COMMON_VIDEO            | 文件系统目录，用作所有用户通用的视频文件的存储库。 典型的路径是 C:\Users\Public\Videos。                                                     |
+| CSIDL_DEFAULT_APPDATA         | 引用 %DEFAULTUSERPROFILE% 内的 Appdata 文件夹。                                                                                              |
+| CSIDL_DEFAULT_LOCAL_APPDATA   | 指 %DEFAULTUSERPROFILE% 内的本地 Appdata 文件夹。                                                                                            |
+| CSIDL_DEFAULT_COOKIES         | 引用 %DEFAULTUSERPROFILE% 内的 Cookies 文件夹。                                                                                              |
+| CSIDL_DEFAULT_CONTACTS        | 引用 %DEFAULTUSERPROFILE 中的联系人文件夹。                                                                                                  |
+| CSIDL_DEFAULT_DESKTOP         | 引用 %DEFAULTUSERPROFILE% 内的桌面文件夹。                                                                                                   |
+| CSIDL_DEFAULT_DOWNLOADS       | 引用 %DEFAULTUSERPROFILE% 内的下载文件夹。                                                                                                   |
+| CSIDL_DEFAULT_FAVORITES       | 引用 %DEFAULTUSERPROFILE% 内的 Favorites 文件夹。                                                                                            |
+| CSIDL_DEFAULT_HISTORY         | 引用 %DEFAULTUSERPROFILE 中的历史记录文件夹。                                                                                                |
+| CSIDL_DEFAULT_INTERNET_CACHE  | 指 %DEFAULTUSERPROFILE% 内的 Internet 缓存文件夹。                                                                                           |
+| CSIDL_DEFAULT_PERSONAL        | 引用 %DEFAULTUSERPROFILE 中的个人文件夹。                                                                                                    |
+| CSIDL_DEFAULT_MYDOCUMENTS     | 引用 %DEFAULTUSERPROFILE% 内的“我的文档”文件夹。                                                                                             |
+| CSIDL_DEFAULT_MYPICTURES      | 引用 %DEFAULTUSERPROFILE% 内的“我的图片”文件夹。                                                                                             |
+| CSIDL_DEFAULT_MYMUSIC         | 引用 %DEFAULTUSERPROFILE 中“我的音乐”文件夹。                                                                                                |
+| CSIDL_DEFAULT_MYVIDEO         | 引用 %DEFAULTUSERPROFILE% 内的“我的视频”文件夹。                                                                                             |
+| CSIDL_DEFAULT_RECENT          | 引用 %DEFAULTUSERPROFILE 中最近的文件夹。                                                                                                    |
+| CSIDL_DEFAULT_SENDTO          | 引用 %DEFAULTUSERPROFILE 中“发送到”文件夹。                                                                                                  |
+| CSIDL_DEFAULT_STARTMENU       | 引用 %DEFAULTUSERPROFILE% 内的“开始菜单”文件夹。                                                                                             |
+| CSIDL_DEFAULT_PROGRAMS        | 引用 %DEFAULTUSERPROFILE% 内的“程序”文件夹。                                                                                                 |
+| CSIDL_DEFAULT_STARTUP         | 引用 %DEFAULTUSERPROFILE% 内的启动文件夹。                                                                                                   |
+| CSIDL_DEFAULT_TEMPLATES       | 引用 %DEFAULTUSERPROFILE% 内的模板文件夹。                                                                                                   |
+| CSIDL_DEFAULT_QUICKLAUNCH     | 指 %DEFAULTUSERPROFILE% 内的快速启动文件夹。                                                                                                 |
+| CSIDL_FONTS                   | 包含字体的虚拟文件夹。 典型的路径是 C:\Windows\Fonts。                                                                                       |
+| CSIDL_PROGRAM_FILESX86        | 64 位系统上的 Program Files 文件夹。 典型的路径是 C:\Program Files (86) 。                                                                   |
+| CSIDL_PROGRAM_FILES_COMMONX86 | 用于在 64 位系统上跨应用程序共享的组件的文件夹。 典型的路径是 C:\Program Files (86) \Common。                                                |
+| CSIDL_PROGRAM_FILES           | Program Files 文件夹。 典型的路径是 C:\Program Files。                                                                                       |
+| CSIDL_PROGRAM_FILES_COMMON    | 跨应用程序共享的组件的文件夹。 典型的路径是 C:\Program Files\Common。                                                                        |
+| CSIDL_RESOURCES               | 包含资源数据的文件系统目录。 典型的路径是 C:\Windows\Resources。                                                                             |
+| CSIDL_SYSTEM                  | Windows系统文件夹。 典型的路径是 C:\Windows\System32。                                                                                       |
+| CSIDL_WINDOWS                 | Windows目录或系统根目录。 这对应于 %WINDIR% 或 %SYSTEMROOT% 环境变量。 典型的路径是 C:\Windows。                                             |
+| DEFAULTUSERPROFILE            | 引用 HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList [DefaultUserProfile] 中的值。                                             |
+| PROFILESFOLDER                | 引用 HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList [ProfilesDirectory] 中的值。                                              |
+| PROGRAMFILES                  | 与 CSIDL_PROGRAM_FILES相同。                                                                                                                 |
+| **PROGRAMFILES (X86)**        | 引用 64 位系统上的 C:\Program Files (x86) 文件夹。                                                                                           |
+| SYSTEM                        | 指 %WINDIR%\system32。                                                                                                                       |
+| SYSTEM16                      | 指 %WINDIR%\system。                                                                                                                         |
+| SYSTEM32                      | 指 %WINDIR%\system32。                                                                                                                       |
+| SYSTEMDRIVE                   | 保存Windows文件夹的驱动器。 请注意，这是驱动器名称，而不是文件夹名称 (C: 不是 C:\) 。                                                        |
+| SYSTEMPROFILE                 | 引用 HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\S-1-5-18 [ProfileImagePath] 中的值。                                      |
+| SYSTEMROOT                    | 与 WINDIR 相同。                                                                                                                             |
+| WINDIR                        | 指位于系统驱动器上的Windows文件夹。                                                                                                          |
+
+仅在用户上下文中识别的变量
+
+可以使用这些变量在.xml文件中包含 context=User 和 context=UserAndSystem
+
+| 变量                   | 说明                                                                                                                                         |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| APPDATA                | 与 CSIDL_APPDATA相同。                                                                                                                       |
+| CSIDL_ADMINTOOLS       | 用于存储单个用户的管理工具的文件系统目录。 Microsoft® 管理控制台 (MMC) 将自定义控制台保存到与用户配置文件漫游的目录。                        |
+| CSIDL_ALTSTARTUP       | 与用户的非本地化启动程序组对应的文件系统目录。                                                                                               |
+| CSIDL_APPDATA          | 作为应用程序特定数据的常用存储库的文件系统目录。 典型的路径是 C:\Documents and Settings\username\Application Data                            |
+| ---                    | 或 C:\Users\username\AppData\Roaming。                                                                                                       |
+| CSIDL_BITBUCKET        | 包含用户回收站中的对象的虚拟文件夹。                                                                                                         |
+| CSIDL_CDBURN_AREA      | 文件系统目录充当等待写入 CD 的文件的暂存区域。 典型的路径是 C:\Users\username\AppData\Local\Microsoft\Windows\MasteredBurning\Disc Burning。 |
+| CSIDL_CONNECTIONS      | 表示包含网络和拨号连接的网络连接的虚拟文件夹。                                                                                               |
+| CSIDL_CONTACTS         | 这指的是 %CSIDL_PROFILE% 中的“联系人”文件夹。                                                                                                |
+| CSIDL_CONTROLS         | 包含控制面板项图标的虚拟文件夹。                                                                                                             |
+| CSIDL_COOKIES          | 作为 Internet Cookie 的常用存储库的文件系统目录。 典型的路径是 C:\Users\username\AppData\Roaming\Microsoft\Windows\Cookies。                 |
+| CSIDL_DESKTOP          | 表示Windows桌面的虚拟文件夹。                                                                                                                |
+| CSIDL_DESKTOPDIRECTORY | 用于在桌面上物理存储文件对象的文件系统目录，不应与桌面文件夹本身混淆。 典型的路径是 C:\Users\username\Desktop。                              |
+| CSIDL_DRIVES           | 表示包含本地计算机上所有内容的“我的计算机”的虚拟文件夹:存储设备、打印机和控制面板。 该文件夹还可能包含映射的网络驱动器。                     |
+| CSIDL_FAVORITES        | 作为用户收藏夹的常用存储库的文件系统目录。 典型的路径是 C:\Users\Username\Favorites。                                                        |
+| CSIDL_HISTORY          | 作为 Internet 历史记录项的常用存储库的文件系统目录。                                                                                         |
+| CSIDL_INTERNET         | Internet Explorer 的虚拟文件夹。                                                                                                             |
+| CSIDL_INTERNET_CACHE   | 用作临时 Internet 文件的常用存储库的文件系统目录。 典型的路径是 C:\Users\username\AppData\Local\Microsoft\Windows\Temporary Internet Files   |
+| CSIDL_LOCAL_APPDATA    | 作为本地非漫游应用程序的数据存储库的文件系统目录。 典型的路径是 C:\Users\username\AppData\Local。                                            |
+| CSIDL_MYDOCUMENTS      | 表示“我的文档”的虚拟文件夹是 C:\Users\Username\Documents。                                                                                   |
+| CSIDL_MYMUSIC          | 用作音乐文件的常用存储库的文件系统目录。 典型的路径是 C:\Users\Username\音乐。                                                               |
+| CSIDL_MYPICTURES       | 用作图像文件的常用存储库的文件系统目录。 典型的路径是 C:\Users\Username\Pictures。                                                           |
+| CSIDL_MYVIDEO          | 作为视频文件的常用存储库的文件系统目录。 典型的路径是 C:\Users\Username\Videos。                                                             |
+| CSIDL_NETHOOD          | 一个文件系统目录， 典型的路径是 C:\Users\Username\AppData\Roaming\Microsoft\Windows\Network 快捷方式。                                       |
+| CSIDL_NETWORK          | 一个虚拟文件夹，表示“我的网络位置”，这是网络命名空间层次结构的根。                                                                           |
+| CSIDL_PERSONAL         | 表示“我的文档”桌面项的虚拟文件夹。 这等效于 CSIDL_MYDOCUMENTS。 典型的路径是 C:\Documents and Settings\username\My Documents。               |
+| CSIDL_PLAYLISTS        | 用于存储播放专辑的虚拟文件夹，通常为 C:\Users\username\My 音乐\Playlists。                                                                   |
+| CSIDL_PRINTERS         | 包含已安装打印机的虚拟文件夹。                                                                                                               |
+| CSIDL_PRINTHOOD        | 文件系统目录。 典型的路径是 C:\Users\username\AppData\Roaming\Microsoft\Windows\Printer 快捷方式。                                           |
+| CSIDL_PROFILE          | 用户的个人资料文件夹。 典型的路径是 C:\Users\Username。                                                                                      |
+| CSIDL_PROGRAMS         | 包含用户的程序组的文件系统目录。 典型的路径是 C:\Users\Username\AppData\Roaming\Microsoft\Windows\Start Menu\Programs。                      |
+| CSIDL_RECENT           | 包含用户最近使用的文档的快捷方式的文件系统目录。 典型的路径是 C:\Users\Username\AppData\Roaming\Microsoft\Windows\Recent。                   |
+| CSIDL_SENDTO           | 包含 “发送到 ”菜单项的文件系统目录。 典型的路径是 C:\Users\username\AppData\Roaming\Microsoft\Windows\SendTo。                               |
+| CSIDL_STARTMENU        | 包含 “开始 ”菜单项的文件系统目录。 XP 中的典型路径是 C:\ProgramData\Microsoft\Windows\Start Menu。                                           |
+| ---                    | Windows Vista中的典型路径是 C:\Users\Username\AppData\Roaming\Microsoft\Windows\Start 菜单。                                                 |
+| CSIDL_STARTUP          | 与用户的启动程序组对应的文件系统目录。 典型的路径是 C:\Users\Username\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup。        |
+| CSIDL_TEMPLATES        | 作为文档模板的常用存储库的文件系统目录。 典型的路径是 C:\Users\username\AppData\Roaming\Microsoft\Windows\Templates。                        |
+| HOMEPATH               | 与标准环境变量相同。                                                                                                                         |
+| TEMP                   | 计算机上的临时文件夹。 典型的路径是 %USERPROFILE%\AppData\Local\Temp。                                                                       |
+| TMP                    | 计算机上的临时文件夹。 典型的路径是 %USERPROFILE%\AppData\Local\Temp。                                                                       |
+| USERPROFILE            | 与 CSIDL_PROFILE相同。                                                                                                                       |
+| USERSID                | 表示当前用户帐户安全标识符 (SID) 。 例如， S-1-5-21-1714567821-1326601894-715345443-1026。                                                   |
+
 ----
 
 ## 参考
