@@ -30,6 +30,12 @@ net start sshd
 Set-Service sshd -StartupType Automatic
 ```
 
+### 卸载
+
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File uninstall-sshd.ps1
+```
+
 ### 配置`sshd_config`
 
 文件位置
