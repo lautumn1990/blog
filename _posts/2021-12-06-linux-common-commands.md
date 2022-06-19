@@ -364,6 +364,7 @@ linux常用命令(持续更新)
 - [curl 命令用法](/linux/2021/10/14/curl-command.html)
 - [用zsh增强shell](/shell/2021/09/20/shell-zsh.html)
 - [find命令](/linux/2021/12/30/linux-find-files.html)
+- [ip命令](/linux/2022/06/19/linux-ip.html)
 
 ----
 
