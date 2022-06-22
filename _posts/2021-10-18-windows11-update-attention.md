@@ -111,6 +111,40 @@ drivers
 rem 然后打开etc文件夹, hosts文件
 ```
 
+### windows setx
+
+setx path会展开的问题
+
+参考[How do I add to the Windows PATH variable using setx? Having weird problems](https://stackoverflow.com/a/59571160)
+
+值中包含变量问题[How to setx without expanding variables?](https://stackoverflow.com/a/25180587/9304033)
+
+```bat
+rem 以下命令会出现问题
+setx PATH "%PATH%;<new-path>"
+
+rem system path
+for /f "usebackq tokens=2,*" %A in (`reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PATH`) do set SYSPATH=%B
+setx PATH "%SYSPATH%;C:\path1;C:\path2" /M
+
+rem user path
+for /f "usebackq tokens=2,*" %A in (`reg query HKCU\Environment /v PATH`) do set USERPATH=%B
+setx PATH "%USERPATH%;C:\path3;C:\path4"
+
+rem 如果值中有变量, 去掉引号通过^转义
+setx var1 ^%nested_var^%\dir
+setx var1 ^"^%nested_var^%\dir space^"
+rem 如果是bat文件中, 通过%转义
+setx var1 %%nested_var%%\dir
+setx var1 "%%nested_var%%\dir space"
+```
+
+### 删除设备和驱动器下多余的项目
+
+```bat
+for /f "tokens=*" %A in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace') do reg delete %A /f
+```
+
 windows快捷命令, [shell](/windows/2021/09/10/windows-shell-commands.html)
 windows快捷命令, [完整版](/windows/2021/12/27/windows-keyboard-shortcuts.html)
 
