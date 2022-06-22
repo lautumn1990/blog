@@ -92,6 +92,7 @@ article_header:
 
 ```md
 <!-- 大小有image--md (default), image--xs, image--sm, image--lg, image--xl-->
+<!-- add image--xxl-->
 ![图片](/assets/images/2021/08/create_images_galaxy.jpg){:.image--xl}
 <!-- 样式有border,shadow,rounded,circle-->
 ![图片](/assets/images/2021/08/create_images_galaxy.jpg){:.image--xl.rounded.shadow}

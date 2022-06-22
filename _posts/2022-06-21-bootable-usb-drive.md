@@ -16,6 +16,8 @@ pageview: true
 有了Ventoy你就无需反复地格式化U盘，你只需要把 `ISO/WIM/IMG/VHD(x)/EFI` 等类型的文件直接拷贝到U盘里面就可以启动了，无需其他操作。
 你可以一次性拷贝很多个不同类型的镜像文件，Ventoy 会在启动时显示一个菜单来供你进行选择
 
+![ventoy](/assets/images/2022/06/bootable-usb-drive-ventoy.png){:.image--xxl.rounded.shadow}
+
 ### 制作启动盘
 
 [下载地址](https://github.com/ventoy/Ventoy/releases), 解压之后双击启动`Ventoy2Disk.exe`, 配置选项-->分区类型建议选`MBR`, 如果做其他系统盘, 在分区设置中在磁盘最后保留一段空间, 比如`100GB`
@@ -32,7 +34,7 @@ pageview: true
 
 ### 制作linux to go
 
-将下好的linux镜像(如ubuntu)丢到ventoy中的第一个分区, 按照正常的步骤安装即可. 注意, 一定要放在当前U盘或者硬盘的最后一段空间中, 不要放错, 比如之前设置的是100GB, 看准大小. 新建ext4分区, 并设置挂载点为`/`, `/boot/efi`也为此硬盘
+将下好的linux镜像(如ubuntu)丢到ventoy中的第一个分区, 按照正常的步骤安装即可. 注意, 一定要放在当前U盘或者硬盘的最后一段空间中, 不要放错, 比如之前设置的是100GB, 看准大小. 新建ext4分区, 并设置挂载点为`/`, `/boot/efi`也为此硬盘分区
 
 ### 通过vmware进行linux to go的安装
 
@@ -143,11 +145,11 @@ menuentry '<-- Return to previous menu [Esc]' --class=vtoyret VTOY_RET {
 
 做好上面的配置后重启系统, 从移动设备启动到Ventoy菜单后按`F6`加载自定义菜单, 就可以看到上面我们配置的两个入口: 第一个启动ubuntu, 第二个返回上一级菜单. 直接选择第一个选项启动系统就OK啦!
 
-### 主机启动可能遇到的问题
+## 主机启动可能遇到的问题
 
-#### 需要关闭`安全启动(Secure Boot)`
+### 需要关闭`安全启动(Secure Boot)`
 
-#### 关闭bitlocker
+### 关闭bitlocker
 
 启动成功后, 可能无法挂载主机硬盘, 提示需要密码, 但是明明又没有加密, 这时可能是windows中的硬盘状态是`bitlocker正在等待激活`, 这时没有key, 但是被加密了...
 
@@ -160,7 +162,7 @@ rem 查看进度
 manage-bde -status
 ```
 
-#### 制作pe镜像
+### 制作pe镜像
 
 [微PE工具箱](https://www.wepe.com.cn/download.html), 打开后点击右下角的光盘图标，让微型PE生成ISO镜像文件并保存到指定路径即可。这个镜像可用于 Ventoy 中的U盘里使用, 参考[微PE工具箱2.2 – 最好用的纯净 WinPE 启动盘/ U盘系统重装维护工具](https://www.jianeryi.com/wepe.html)
 
@@ -184,7 +186,7 @@ reboot
 lsmod | grep vmw
 ```
 
-#### 双系统时差问题
+### 双系统时差问题
 
 参考[linux双系统切换时间,linux与windows双系统下时间不一致的解决办法](https://blog.csdn.net/weixin_36357157/article/details/116585392)
 
@@ -224,7 +226,7 @@ sudo timedatectl set-ntp true
 sudo hwclock -w
 ```
 
-#### 修改卷标
+### 修改卷标
 
 ```sh
 # 在linux中
@@ -235,7 +237,7 @@ sudo e2label /dev/nvme0n1p3
 sudo e2label /dev/nvme0n1p3 lautumn-ubuntu
 ```
 
-#### 出现initramfs
+### 出现initramfs
 
 通常出现进入initramfs，是因为关机不当导致磁盘文件受损还是什么引起的，所以：我们要把主分区修复！
 
