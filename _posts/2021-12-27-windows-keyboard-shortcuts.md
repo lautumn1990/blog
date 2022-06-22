@@ -734,9 +734,195 @@ Surface Hub
 | USERPROFILE            | 与 CSIDL_PROFILE相同。                                                                                                                       |
 | USERSID                | 表示当前用户帐户安全标识符 (SID) 。 例如， S-1-5-21-1714567821-1326601894-715345443-1026。                                                   |
 
+CLSID
+
+explorer shell::: {CLSID key}
+explorer /e,:: {CLSID key}
+
+| 打开                                     | CLSID 键 (GUID)   快捷方式                                                      |
+| ---------------------------------------- | ------------------------------------------------------------------------------- |
+| 3D 对象（文件夹）                        | {0DB7E03F-FC29-4DC6-9020-FF41B59E513A}                                          |
+| 添加网络位置                             | {D4480A50-BA28-11d1-8E75-00C04FA31A86}                                          |
+| 管理工具                                 | {D20EA4E1-3957-11d2-A40B-0C5020524153}                                          |
+| 应用                                     | {4234d49b-0245-4df3-b780-3893943456e1}                                          |
+| 自动播放                                 | {9C60DE1E-E5FC-40f4-A487-460851A8D915}                                          |
+| 备份和恢复 (Windows 7)                   | {B98A2BEA-7D42-4558-8BD1-832F41BAC6FD}                                          |
+| BitLocker 驱动器加密                     | {D9EF8727-CAC2-4e60-809E-86F80A666C91}                                          |
+| 蓝牙设备                                 | {28803F59-3A75-4058-995F-4EE5503B023C}                                          |
+| 色彩管理                                 | {B2C761C6-29BC-4f19-9251-E6195265BAF1}                                          |
+| 命令文件夹                               | {437ff9c0-a07f-4fa0-af80-84b6c6440a16}                                          |
+| 公共场所 FS 文件夹                       | {d34a6ca6-62c2-4c34-8a7c-14709c1ad938}                                          |
+| 控制面板                                 | {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}                                          |
+| 控制面板（所有任务）                     | {ED7BA470-8E54-465E-825C-99712043E01C}                                          |
+| 控制面板（总是分类视图）                 | {26EE0668-A00A-44D7-9371-BEB064C98683}                                          |
+| 外观和个性化                             | {26EE0668-A00A-44D7-9371-BEB064C98683}\1                                        |
+| 时钟和区域                               | {26EE0668-A00A-44D7-9371-BEB064C98683}\6                                        |
+| 四通八达的交通网络                       | {26EE0668-A00A-44D7-9371-BEB064C98683}\7                                        |
+| 硬件和声音                               | {26EE0668-A00A-44D7-9371-BEB064C98683}\2                                        |
+| 网络和互联网                             | {26EE0668-A00A-44D7-9371-BEB064C98683}\3                                        |
+| 程式                                     | {26EE0668-A00A-44D7-9371-BEB064C98683}\8                                        |
+| 系统和安全                               | {26EE0668-A00A-44D7-9371-BEB064C98683}\5                                        |
+|                                          | OR                                                                              |
+|                                          | {26EE0668-A00A-44D7-9371-BEB064C98683}\10                                       |
+| 用户帐户                                 | {26EE0668-A00A-44D7-9371-BEB064C98683}\9                                        |
+| 控制面板（总是图标视图）                 | {21EC2020-3AEA-1069-A2DD-08002B30309D}                                          |
+| 凭证管理器                               | {1206F5F1-0569-412C-8FEC-3204630DFB70}                                          |
+| 日期和时间                               | {E2E7934B-DCE5-43C4-9576-7FE4F75E7480}                                          |
+| 默认程序                                 | {17cd9488-1228-4b2f-88ce-4298e93e0966}                                          |
+| 设置中的默认应用页面                     | {17cd9488-1228-4b2f-88ce-4298e93e0966}\pageDefaultProgram                       |
+| 设置中的默认应用页面                     | {17cd9488-1228-4b2f-88ce-4298e93e0966}\pageFileAssoc                            |
+| 出现在计算机中的委托文件夹               | {b155bdf8-02f0-451e-9a26-ae317cfd7779}                                          |
+| 桌面（文件夹）                           | {B4BFCC3A-DB2C-424C-B029-7FE99A87C641}                                          |
+| 装置经理                                 | {74246bfc-4c96-11d0-abef-0020af6b0b7a}                                          |
+| 设备和打印机                             | {A8A91A66-3A7D-4424-8D24-04E180695C7A}                                          |
+| 文件（文件夹）                           | {A8CDFF1C-4878-43be-B5FD-F8091C1C60D0}                                          |
+|                                          | {d3162b92-9365-467a-956b-92703aca08af}                                          |
+| 下载（文件夹）                           | {088e3905-0323-4b02-9826-5d99428e115f}                                          |
+|                                          | {374DE290-123F-4565-9164-39C4925E467B}                                          |
+| 轻松访问中心                             | {D555645E-D4F8-4c29-A827-D93C859C4F2A}                                          |
+| 在没有显示器的情况下使用计算机           | {D555645E-D4F8-4c29-A827-D93C859C4F2A}\pageNoVisual                             |
+| 让电脑更容易看                           | {D555645E-D4F8-4c29-A827-D93C859C4F2A}\pageEasierToSee                          |
+| 在没有鼠标或键盘的情况下使用计算机       | {D555645E-D4F8-4c29-A827-D93C859C4F2A}\pageNoMouseOrKeyboard                    |
+| 让鼠标更容易使用                         | {D555645E-D4F8-4c29-A827-D93C859C4F2A}\pageEasierToClick                        |
+| 设置鼠标键                               | {D555645E-D4F8-4c29-A827-D93C859C4F2A}\pageMouseKeysSettings                    |
+| 使键盘更易于使用                         | {D555645E-D4F8-4c29-A827-D93C859C4F2A}\pageKeyboardEasierToUse                  |
+| 使用文本或视觉替代声音                   | {D555645E-D4F8-4c29-A827-D93C859C4F2A}\pageEasierWithSounds                     |
+| 更容易专注于任务                         | {D555645E-D4F8-4c29-A827-D93C859C4F2A}\pageEasierToReadAndWrite                 |
+| 设置过滤键                               | {D555645E-D4F8-4c29-A827-D93C859C4F2A}\pageFilterKeysSettings                   |
+| 设置粘滞键                               | {D555645E-D4F8-4c29-A827-D93C859C4F2A}\pageStickyKeysSettings                   |
+| 获取建议以使您的计算机更易于使用（认知） | {D555645E-D4F8-4c29-A827-D93C859C4F2A}\pageQuestionsCognitive                   |
+| 获取建议以使您的计算机更易于使用（视力） | {D555645E-D4F8-4c29-A827-D93C859C4F2A}\pageQuestionsEyesight                    |
+| 设置重复键和慢键                         | {D555645E-D4F8-4c29-A827-D93C859C4F2A}\pageRepeatRateSlowKeysSettings           |
+| 电子邮件（默认电子邮件程序）             | {2559a1f5-21d7-11d4-bdaf-00c04f60b9f0}                                          |
+| 收藏夹                                   | {323CA680-C24D-4099-B94D-446DD2D7249E}                                          |
+| 文件资源管理器选项                       | {6DFD7C5C-2451-11d3-A299-00C04F8EF6AF}                                          |
+| 文件历史                                 | {F6B6E965-E9B2-444B-9286-10C9152EDBC5}                                          |
+| 文件夹选项                               | {6DFD7C5C-2451-11d3-A299-00C04F8EF6AF}                                          |
+| 字体设置                                 | {93412589-74D4-4E4E-AD0E-E0CB621440FD}                                          |
+| 字体（文件夹）                           | {BD84B380-8CA2-1069-AB1D-08000948F534}                                          |
+| 常用文件夹                               | {3936E9E4-D92C-4EEE-A85A-BC16D5EA0819}                                          |
+| 游戏资源管理器                           | {ED228FDF-9EA8-4870-83b1-96b02CFE0D52}                                          |
+| 获取程序                                 | {15eae92e-f17a-4431-9f28-805e482dafd4}                                          |
+| 帮助和支持                               | {2559a1f1-21d7-11d4-bdaf-00c04f60b9f0}                                          |
+| Hyper-V 远程文件浏览                     | {0907616E-F5E6-48D8-9D61-A91C3D28106D}                                          |
+| 索引选项                                 | {87D66A43-7B11-4A28-9811-C86EE395ACF7}                                          |
+| 红外线（如果已安装）                     | {A0275511-0E86-4ECA-97C2-ECD8F1221D08}                                          |
+| 已安装的更新                             | {d450a8a1-9568-45c7-9c0e-b4f9fb4537bd}                                          |
+| 英特尔快速存储技术（如果已安装）         | {E342F0FE-FF1C-4c41-BE37-A0271FC90396}                                          |
+| Internet 选项 (Internet Explorer)        | {A3DD4F92-658A-410F-84FD-6FBBBEF2FFFE}                                          |
+| 键盘属性                                 | {725BE8F7-668E-4C7B-8F90-46BDB0936430}                                          |
+| 图书馆                                   | {031E4825-7B94-4dc3-B131-E946B44C8DD5}                                          |
+| 位置信息（电话和调制解调器控制面板）     | {40419485-C444-4567-851A-2DD7BFA1684D}                                          |
+| 位置设置                                 | {E9950154-C418-419e-A90A-20C5287AE24B}                                          |
+| 媒体服务器                               | {289AF617-1CC3-42A6-926C-E6A863F0E3BA}                                          |
+| 鼠标属性                                 | {6C8EEC18-8D75-41B2-A177-8831D59D2D50}                                          |
+| 音乐（文件夹）                           | {1CF1260C-4DD0-4ebb-811F-33C572699FDE}                                          |
+|                                          | {3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}                                          |
+| 我的文件                                 | {450D8FBA-AD25-11D0-98A8-0800361B1103}                                          |
+| netplwiz                                 | {7A9D77BD-5403-11d2-8785-2E0420524153}                                          |
+| 网络                                     | {F02C1A0D-BE21-4350-88B0-7367FC96EF3C}                                          |
+| 网络和共享中心                           | {8E908FC9-BECC-40f6-915B-F4CA0E70D03D}                                          |
+| 高级共享设置                             | {8E908FC9-BECC-40f6-915B-F4CA0E70D03D}\Advanced                                 |
+| 媒体流选项                               | {8E908FC9-BECC-40f6-915B-F4CA0E70D03D}\ShareMedia                               |
+| 网络连接                                 | {7007ACC7-3202-11D1-AAD2-00805FC1270E}                                          |
+|                                          | {992CFFA0-F557-101A-88EC-00DD010CCC48}                                          |
+| 网络（工作组）                           | {208D2C60-3AEA-1069-A2D7-08002B30309D}                                          |
+| 通知区域图标                             | {05d7b0f4-2121-4eff-bf6b-ed3f69b894d9}                                          |
+| NVIDIA 控制面板（如果已安装）            | {0bbca823-e77d-419e-9a44-5adec2c8eeb0}                                          |
+| 脱机文件夹                               | {AFDB1F70-2A4C-11d2-9039-00C04F8EEB3E}                                          |
+| 一个驱动器                               | {018D5C66-4533-4307-9B53-224DE2ED1FE6}                                          |
+| 笔和触摸                                 | {F82DF8F7-8B9F-442E-A48C-818EA735FF9B}                                          |
+| 个性化                                   | {ED834ED6-4B5A-4bfe-8F11-A626DCB6A921}                                          |
+| 颜色和外观                               | {ED834ED6-4B5A-4bfe-8F11-A626DCB6A921}\pageColorization                         |
+| 桌面背景                                 | {ED834ED6-4B5A-4bfe-8F11-A626DCB6A921}\pageWallpaper                            |
+| 图片（文件夹）                           | {24ad3ad4-a569-4530-98e1-ab02f9417aa8}                                          |
+|                                          | {3ADD1653-EB32-4cb0-BBD7-DFA0ABB5ACCA}                                          |
+| 便携式设备                               | {35786D3C-B075-49b9-88DD-029876E11C01}                                          |
+| 电源选项                                 | {025A5937-A6BE-4686-A844-36FE4BEC8B6D}                                          |
+| 创建电源计划                             | {025A5937-A6BE-4686-A844-36FE4BEC8B6D}\pageCreateNewPlan                        |
+| 编辑计划设置                             | {025A5937-A6BE-4686-A844-36FE4BEC8B6D}\pagePlanSettings                         |
+| 系统设置                                 | {025A5937-A6BE-4686-A844-36FE4BEC8B6D}\pageGlobalSettings                       |
+| 以前的版本结果文件夹                     | {f8c2ab3b-17bc-41da-9758-339d7dbf2d88}                                          |
+| printhood 委托文件夹                     | {ed50fc29-b964-48a9-afb3-15ebb9b97f36}                                          |
+| 打印机                                   | {2227A280-3AEA-1069-A2DE-08002B30309D}                                          |
+|                                          | {863aa9fd-42df-457b-8e4d-0de1b8015c60}                                          |
+| 问题报告设置                             | {BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}\pageSettings                             |
+| 程序和特点                               | {7b81be6a-ce2b-4676-a29e-eb907a5126c5}                                          |
+| 公共（文件夹）                           | {4336a54d-038b-4685-ab02-99bb52d3fb8b}                                          |
+| 快速访问                                 | {679f85cb-0220-4080-b29b-5540cc05aab6}                                          |
+| 最近的文件夹                             | {22877a6d-37a1-461a-91b0-dbda5aaebc99}                                          |
+| 最近项目实例文件夹                       | {4564b25e-30cd-4787-82ba-39e73a750b14}                                          |
+| 恢复                                     | {9FE63AFD-59CF-4419-9775-ABCC3849F861}                                          |
+| 回收站                                   | {645FF040-5081-101B-9F08-00AA002F954E}                                          |
+| 地区                                     | {62D8ED13-C9D0-4CE8-A914-47DD628FB1B0}                                          |
+| 可靠性监视器                             | {BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}\pageReliabilityView                      |
+| 远程协助                                 | {C58C4893-3BE0-4B45-ABB5-A63E4B8C8651}\raPage                                   |
+| RemoteApp 和桌面连接                     | {241D7C96-F8BF-4F85-B01F-E2B043341A4B}                                          |
+| 连接属性                                 | {241D7C96-F8BF-4F85-B01F-E2B043341A4B}\PropertiesPage                           |
+| 远程打印机                               | {863aa9fd-42df-457b-8e4d-0de1b8015c60}                                          |
+| 可移动驱动器                             | {F5FB2C77-0E2F-4A16-A381-3E560C68BC83}                                          |
+| 可移动存储设备                           | {a6482830-08eb-41e2-84c1-73920c2badb9}                                          |
+| 结果文件夹                               | {2965e715-eb66-4719-b53f-1672673bbefa}                                          |
+| 跑                                       | {2559a1f3-21d7-11d4-bdaf-00c04f60b9f0}                                          |
+| 搜索（文件资源管理器）                   | {9343812e-1c37-4a49-a12e-4b2d810d956b}                                          |
+| 搜索 (Windows)                           | {2559a1f8-21d7-11d4-bdaf-00c04f60b9f0}                                          |
+| 安全和维护                               | {BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}                                          |
+| 高级问题报告设置                         | {BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}\pageAdvSettings                          |
+| 更改安全和维护设置                       | {BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}\Settings                                 |
+| 问题详情                                 | {BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}\pageReportDetails                        |
+| 问题报告设置                             | {BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}\pageSettings                             |
+| 问题报告                                 | {BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}\pageProblems                             |
+| 可靠性监视器                             | {BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}\pageReliabilityView                      |
+| 设置程序访问和计算机默认值               | {2559a1f7-21d7-11d4-bdaf-00c04f60b9f0}                                          |
+| 显示桌面                                 | {3080F90D-D7AD-11D9-BD98-0000947B0257}                                          |
+| 声音                                     | {F2DDFC82-8F12-4CDD-B7DC-D4FE1425AA4D}                                          |
+| 语音识别                                 | {58E3C745-D971-4081-9034-86E34B30836A}                                          |
+| 存储空间                                 | {F942C606-0914-47AB-BE56-1321B8035096}                                          |
+| 同步中心                                 | {9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}                                          |
+| 同步设置                                 | {9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}\::{F1390A9A-A3F4-4E5D-9C5F-98F3BD8D935C} |
+| 同步设置文件夹                           | {2E9E59C0-B437-4981-A647-9C34B9B90891}                                          |
+| 系统                                     | {BB06C0E4-D293-4f75-8A90-CB05B6477EEE}                                          |
+| 系统图标                                 | {05d7b0f4-2121-4eff-bf6b-ed3f69b894d9}\SystemIcons                              |
+| 系统还原                                 | {3f6bc534-dfa1-4ab4-ae54-ef25a74e0107}                                          |
+| 平板电脑设置                             | {80F3F1D5-FECA-45F3-BC32-752C152E456E}                                          |
+| 任务视图                                 | {3080F90E-D7AD-11D9-BD98-0000947B0257}                                          |
+| 任务栏和导航属性                         | {0DF44EAA-FF21-4412-828E-260A8728E7F1}                                          |
+| 设置中的任务栏页面                       | {0DF44EAA-FF21-4412-828E-260A8728E7F1}                                          |
+| 文字转语音                               | {D17D1D6D-CC3F-4815-8FE3-607E7D5D10B3}                                          |
+| 这个设备                                 | {5b934b42-522b-4c34-bbfe-37a3ef7b9c90}                                          |
+| 这台电脑                                 | {20D04FE0-3AEA-1069-A2D8-08002B30309D}                                          |
+| 故障排除                                 | {C58C4893-3BE0-4B45-ABB5-A63E4B8C8651}                                          |
+| 附加信息                                 | {C58C4893-3BE0-4B45-ABB5-A63E4B8C8651}\resultPage                               |
+| 所有类别                                 | {C58C4893-3BE0-4B45-ABB5-A63E4B8C8651}\listAllPage                              |
+| 更改设置                                 | {C58C4893-3BE0-4B45-ABB5-A63E4B8C8651}\settingPage                              |
+| 历史                                     | {C58C4893-3BE0-4B45-ABB5-A63E4B8C8651}\historyPage                              |
+| 搜索疑难解答                             | {C58C4893-3BE0-4B45-ABB5-A63E4B8C8651}\searchPage                               |
+| 解决问题 - 硬件和声音                    | {C58C4893-3BE0-4B45-ABB5-A63E4B8C8651}\devices                                  |
+| 解决问题 - 网络和 Internet               | {C58C4893-3BE0-4B45-ABB5-A63E4B8C8651}\network                                  |
+| 解决问题 - 程序                          | {C58C4893-3BE0-4B45-ABB5-A63E4B8C8651}\applications                             |
+| 解决问题 - 系统和安全                    | {C58C4893-3BE0-4B45-ABB5-A63E4B8C8651}\system                                   |
+| 用户帐户                                 | {60632754-c523-4b62-b45c-4172da012619}                                          |
+| 更改您的姓名                             | {60632754-c523-4b62-b45c-4172da012619}\pageRenameMyAccount                      |
+| 管理帐户                                 | {60632754-c523-4b62-b45c-4172da012619}\pageAdminTasks                           |
+| 用户帐户 (netplwiz)                      | {7A9D77BD-5403-11d2-8785-2E0420524153}                                          |
+| 用户固定                                 | {1f3427c8-5c10-4210-aa03-2ee45287d668}                                          |
+| 用户资料                                 | {59031a47-3f72-44a7-89c5-5595fe6b30ee}                                          |
+| 视频（文件夹）                           | {A0953C92-50DC-43bf-BE83-3742FED03C9C}                                          |
+|                                          | {f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}                                          |
+| 网络浏览器（默认）                       | {871C5380-42A0-1069-A2EA-08002B30309D}                                          |
+| Windows Defender 防火墙                  | {4026492F-2F69-46B8-B9BF-5654FC07E423}                                          |
+| 允许的应用                               | {4026492F-2F69-46B8-B9BF-5654FC07E423}\pageConfigureApps                        |
+| 自定义设置                               | {4026492F-2F69-46B8-B9BF-5654FC07E423}\PageConfigureSettings                    |
+| 恢复默认值                               | {4026492F-2F69-46B8-B9BF-5654FC07E423}\PageRestoreDefaults                      |
+| Windows 移动中心                         | {5ea4f148-308c-46d7-98a9-49041b1dd468}                                          |
+| Windows功能                              | {67718415-c450-4f3c-bf8a-b487642dc39b}                                          |
+| Windows To Go                            | {8E0C279D-0BD1-43C3-9EBD-31C3DC5B8A77}                                          |
+| 工作文件夹                               | {ECDB0924-4208-451E-8EE0-373C0956DE16}                                          |
+
 ----
 
 ## 参考
 
 - [Complete List of Windows 10 Keyboard Shortcuts and Run Commands](https://www.groovypost.com/howto/windows-10-keyboard-shortcuts/)
 - [启动 Windows 设置应用](https://docs.microsoft.com/zh-cn/windows/uwp/launch-resume/launch-settings-app)
+- [Complete List of Windows 10 CLSID Key (GUID) Shortcuts](https://www.tenforums.com/tutorials/3123-clsid-key-guid-shortcuts-list-windows-10-a.html)
