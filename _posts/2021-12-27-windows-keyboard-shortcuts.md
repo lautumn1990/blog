@@ -734,7 +734,7 @@ Surface Hub
 | USERPROFILE            | 与 CSIDL_PROFILE相同。                                                                                                                       |
 | USERSID                | 表示当前用户帐户安全标识符 (SID) 。 例如， S-1-5-21-1714567821-1326601894-715345443-1026。                                                   |
 
-CLSID
+### CLSID
 
 explorer shell::: {CLSID key}
 explorer /e,:: {CLSID key}
@@ -919,6 +919,69 @@ explorer /e,:: {CLSID key}
 | Windows To Go                            | {8E0C279D-0BD1-43C3-9EBD-31C3DC5B8A77}                                          |
 | 工作文件夹                               | {ECDB0924-4208-451E-8EE0-373C0956DE16}                                          |
 
+### 控制面板
+
+> 用法  
+> explorer shell:::{GUID}  
+> control /name 规范名称  
+
+| 名称                    | 规范名称                                 | GUID                                   |
+| ----------------------- | ---------------------------------------- | -------------------------------------- |
+| 操作中心                | Microsoft.ActionCenter                   | {BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6} |
+| 管理工具                | Microsoft.AdministrativeTools            | {D20EA4E1-3957-11d2-A40B-0C5020524153} |
+| 自动播放                | Microsoft.AutoPlay                       | {9C60DE1E-E5FC-40f4-A487-460851A8D915} |
+| 生物识别设备            | Microsoft.BiometricDevices               | {0142e4d0-fb7a-11dc-ba4a-000ffe7ab428} |
+| BitLocker 驱动器加密    | Microsoft.BitLockerDriveEncryption       | {D9EF8727-CAC2-4e60-809E-86F80A666C91} |
+| 颜色管理                | Microsoft.ColorManagement                | {B2C761C6-29BC-4f19-9251-E6195265BAF1} |
+| 凭据管理器              | Microsoft.CredentialManager              | {1206F5F1-0569-412C-8FEC-3204630DFB70} |
+| 日期和时间              | Microsoft.DateAndTime                    | {E2E7934B-DCE5-43C4-9576-7FE4F75E7480} |
+| 默认程序                | Microsoft.DefaultPrograms                | {17cd9488-1228-4b2f-88ce-4298e93e0966} |
+| 设备管理器              | Microsoft.DeviceManager                  | {74246bfc-4c96-11d0-abef-0020af6b0b7a} |
+| 设备和打印机            | Microsoft.DevicesAndPrinters             | {A8A91A66-3A7D-4424-8D24-04E180695C7A} |
+| 显示                    | Microsoft.Display                        | {C555438B-3C23-4769-A71F-B6D3D9B6053A} |
+| 轻松访问中心            | Microsoft.EaseOfAccessCenter             | {D555645E-D4F8-4c29-A827-D93C859C4F2A} |
+| 家庭安全                | Microsoft.ParentalControls               | {96AE8D84-A250-4520-95A5-A47A7E3C548B} |
+| 文件历史记录            | Microsoft.FileHistory                    | {F6B6E965-E9B2-444B-9286-10C9152EDBC5} |
+| 文件夹选项              | Microsoft.FolderOptions                  | {6DFD7C5C-2451-11d3-A299-00C04F8EF6AF} |
+| 字体                    | Microsoft.Fonts                          | {93412589-74D4-4E4E-AD0E-E0CB621440FD} |
+| 家庭组                  | Microsoft.HomeGroup                      | {67CA7650-96E6-4FDD-BB43-A8E774F73A57} |
+| 索引选项                | Microsoft.IndexingOptions                | {87D66A43-7B11-4A28-9811-C86EE395ACF7} |
+| 红外线                  | Microsoft.Infrared                       | {A0275511-0E86-4ECA-97C2-ECD8F1221D08} |
+| Internet 选项           | Microsoft.InternetOptions                | {A3DD4F92-658A-410F-84FD-6FBBBEF2FFFE} |
+| iSCSI 发起程序          | Microsoft.iSCSIInitiator                 | {A304259D-52B8-4526-8B1A-A1D6CECC8243} |
+| iSNS 服务器             | Microsoft.iSNSServer                     | {0D2A3442-5181-4E3A-9BD4-83BD10AF3D76} |
+| Keyboard                | Microsoft.Keyboard                       | {725BE8F7-668E-4C7B-8F90-46BDB0936430} |
+| 位置设置                | Microsoft.LocationSettings               | {E9950154-C418-419e-A90A-20C5287AE24B} |
+| 鼠标                    | Microsoft.Mouse                          | {6C8EEC18-8D75-41B2-A177-8831D59D2D50} |
+| MPIOConfiguration       | Microsoft.MPIOConfiguration              | {AB3BE6AA-7561-4838-AB77-ACF8427DF426} |
+| 网络和共享中心          | Microsoft.NetworkAndSharingCenter        | {8E908FC9-BECC-40f6-915B-F4CA0E70D03D} |
+| 通知区域图标            | Microsoft.NotificationAreaIcons          | {05d7b0f4-2121-4eff-bf6b-ed3f69b894d9} |
+| 触控笔和触摸            | Microsoft.PenAndTouch                    | {F82DF8F7-8B9F-442E-A48C-818EA735FF9B} |
+| 个性化                  | Microsoft.Personalization                | {ED834ED6-4B5A-4bfe-8F11-A626DCB6A921} |
+| 电话和调制解调器        | Microsoft.PhoneAndModem                  | {40419485-C444-4567-851A-2DD7BFA1684D} |
+| 电源选项                | Microsoft.PowerOptions                   | {025A5937-A6BE-4686-A844-36FE4BEC8B6D} |
+| “程序和功能”            | Microsoft.ProgramsAndFeatures            | {7b81be6a-ce2b-4676-a29e-eb907a5126c5} |
+| 恢复                    | Microsoft.Recovery                       | {9FE63AFD-59CF-4419-9775-ABCC3849F861} |
+| 区域                    | Microsoft.RegionAndLanguage              | {62D8ED13-C9D0-4CE8-A914-47DD628FB1B0} |
+| RemoteApp 和桌面连接    | Microsoft.RemoteAppAndDesktopConnections | {241D7C96-F8BF-4F85-B01F-E2B043341A4B} |
+| 声音                    | Microsoft.Sound                          | {F2DDFC82-8F12-4CDD-B7DC-D4FE1425AA4D} |
+| 语音识别                | Microsoft.SpeechRecognition              | {58E3C745-D971-4081-9034-86E34B30836A} |
+| 存储空间                | Microsoft.StorageSpaces                  | {F942C606-0914-47AB-BE56-1321B8035096} |
+| 同步中心                | Microsoft.SyncCenter                     | {9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF} |
+| 系统                    | Microsoft.System                         | {BB06C0E4-D293-4f75-8A90-CB05B6477EEE} |
+| 平板电脑设置            | Microsoft.TabletPCSettings               | {80F3F1D5-FECA-45F3-BC32-752C152E456E} |
+| 任务栏和导航            | Microsoft.Taskbar                        | {0DF44EAA-FF21-4412-828E-260A8728E7F1} |
+| 故障排除                | Microsoft.Troubleshooting                | {C58C4893-3BE0-4B45-ABB5-A63E4B8C8651} |
+| TSAppInstall            | Microsoft.TSAppInstall                   | {BAA884F4-3432-48b8-AA72-9BF20EEF31D5} |
+| 用户帐户                | Microsoft.UserAccounts                   | {60632754-c523-4b62-b45c-4172da012619} |
+| Windows Anytime Upgrade | Microsoft.WindowsAnytimeUpgrade          | {BE122A0E-4503-11DA-8BDE-F66BAD1E3F3A} |
+| Windows Defender        | Microsoft.WindowsDefender                | {D8559EB9-20C0-410E-BEDA-7ED416AECC2A} |
+| Windows 防火墙          | Microsoft.WindowsFirewall                | {4026492F-2F69-46B8-B9BF-5654FC07E423} |
+| Windows 移动中心        | Microsoft.MobilityCenter                 | {5ea4f148-308c-46d7-98a9-49041b1dd468} |
+| Windows To Go           | Microsoft.PortableWorkspaceCreator       | {8E0C279D-0BD1-43C3-9EBD-31C3DC5B8A77} |
+| Windows 更新            | Microsoft.WindowsUpdate                  | {36eef7db-88ad-4e81-ad49-0e313f0c35f8} |
+| 工作文件夹              | Microsoft.WorkFolders                    | {ECDB0924-4208-451E-8EE0-373C0956DE16} |
+
 ----
 
 ## 参考
@@ -926,3 +989,4 @@ explorer /e,:: {CLSID key}
 - [Complete List of Windows 10 Keyboard Shortcuts and Run Commands](https://www.groovypost.com/howto/windows-10-keyboard-shortcuts/)
 - [启动 Windows 设置应用](https://docs.microsoft.com/zh-cn/windows/uwp/launch-resume/launch-settings-app)
 - [Complete List of Windows 10 CLSID Key (GUID) Shortcuts](https://www.tenforums.com/tutorials/3123-clsid-key-guid-shortcuts-list-windows-10-a.html)
+- [控制面板项的规范名称](https://docs.microsoft.com/zh-cn/windows/win32/shell/controlpanel-canonical-names)

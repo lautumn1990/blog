@@ -86,7 +86,7 @@ rem 导入OEM证书，后面为OEM证书的路径
 slmgr.vbs -ilc
 ```
 
-### 打开控制面板
+### 常用命令
 
 `win` + `r` 打开运行框, 管理员权限运行, `ctrl` + `shift` + `enter`
 
@@ -145,8 +145,30 @@ setx var1 "%%nested_var%%\dir space"
 for /f "tokens=*" %A in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace') do reg delete %A /f
 ```
 
-windows快捷命令, [shell](/windows/2021/09/10/windows-shell-commands.html)
-windows快捷命令, [完整版](/windows/2021/12/27/windows-keyboard-shortcuts.html)
+### bat中当前启动当前文件夹文件
+
+参考[call batch file and run using its own path/directory](https://serverfault.com/a/914641)
+
+```bat
+@Echo off
+Pushd "%~dp0"
+app1.exe
+popd
+```
+
+或者
+
+```bat
+@Echo off
+"%~dp0app1.exe"
+```
+
+----
+
+## 链接
+
+- windows快捷命令, [shell](/windows/2021/09/10/windows-shell-commands.html)
+- windows快捷命令, [完整版](/windows/2021/12/27/windows-keyboard-shortcuts.html)
 
 ----
 
