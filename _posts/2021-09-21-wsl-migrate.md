@@ -257,9 +257,10 @@ swap=512MB
    sed -i 's/nameserver.*/\n# this is replace by init script\nnameserver 172.30.32.1/' /etc/resolv.conf
    
    # config vEthernet (WSL) ip
-   ORIGIN_HOST_WSL_IP=\$(/mnt/c/Windows/System32/netsh.exe interface ipv4 show address  "vEthernet (WSL)" | grep IP | awk -v RS='\r\n' '{print \$3}')
-   echo \${ORIGIN_HOST_WSL_IP} | xargs -I {} /mnt/c/Windows/System32/netsh.exe interface ipv4 delete address "vEthernet (WSL)" {}
-   /mnt/c/Windows/System32/netsh.exe interface ipv4 add address "vEthernet (WSL)" 172.30.32.1 255.255.240.0
+   /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -c "Get-NetAdapter 'vEthernet (WSL)' | Get-NetIPAddress | Remove-NetIPAddress -Confirm:\\\$False; New-NetIPAddress -IPAddress 172.30.32.1 -PrefixLength 20 -InterfaceAlias 'vEthernet (WSL)';"
+
+   # config WSLNat
+   /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -c "Get-NetNat | ? Name -Eq WSLNat | Remove-NetNat -Confirm:\\\$False; New-NetNat -Name WSLNat -InternalIPInterfaceAddressPrefix 172.30.32.0/20;"
    EOF
    
    chmod +x static_ip.sh
@@ -348,6 +349,15 @@ swap=512MB
   WScript.Quit
   End If
   'actual code
+  ```
+
+## wsl2不能上网
+
+- 有时重置网络时, 可能会把WSL的Nat删除, 需要重新设置一下, 在powershell中使用管理员权限执行以下代码
+
+  ```powershell
+  Get-NetNat | ? Name -Eq WSLNat | Remove-NetNat -Confirm:$False;
+  New-NetNat -Name WSLNat -InternalIPInterfaceAddressPrefix 172.30.32.0/20;
   ```
 
 ----
