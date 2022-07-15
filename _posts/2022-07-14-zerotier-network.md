@@ -193,8 +193,8 @@ Set-NetIPInterface -Forwarding Enabled
 # 全部取消
 Set-NetIPInterface -Forwarding Disabled
 
-# 开启RemoteAccess
-Set-Service RemoteAccess -StartupType Automatic; Start-Service RemoteAccess
+# 开启RemoteAccess, 所有的服务都会开启Forwarding, 效果和`Set-NetIPInterface -Forwarding Enabled`一样
+# Set-Service RemoteAccess -StartupType Automatic; Start-Service RemoteAccess
 ```
 
 #### 开启windows主机访问docker镜像
