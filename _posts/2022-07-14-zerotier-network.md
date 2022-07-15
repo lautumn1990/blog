@@ -174,13 +174,27 @@ sudo systemctl restart docker
 
 ### Host21配置
 
-#### 开启Nat路由转发
+#### windows开启路由转发
+
+参考[How can I enable packet forwarding on Windows?](https://serverfault.com/a/929089)
 
 在windows中管理员权限运行`powershell`, 执行
 
 ```powershell
-Get-NetNat | ? Name -Eq zero | Remove-NetNat -Confirm:$False;
-New-NetNat -Name zero -InternalIPInterfaceAddressPrefix 192.168.192.0/24;
+# 查询
+Get-NetIPInterface | select ifIndex,InterfaceAlias,AddressFamily,ConnectionState,Forwarding | Sort-Object -Property IfIndex | Format-Table
+
+# 设置
+Set-NetIPInterface -ifindex <required_interface_index_from_table> -Forwarding Enabled
+# 需要设置本地连接/WLAN和ZeroTier One
+
+# 全部设置
+Set-NetIPInterface -Forwarding Enabled
+# 全部取消
+Set-NetIPInterface -Forwarding Disabled
+
+# 开启RemoteAccess
+Set-Service RemoteAccess -StartupType Automatic; Start-Service RemoteAccess
 ```
 
 #### 开启windows主机访问docker镜像
@@ -237,6 +251,8 @@ sudo ip route add 192.168.200.0/24 via 192.168.100.11
 sudo ip route add 172.11.0.0/16 via 192.168.100.11
 sudo ip route add 172.21.0.0/16 via 192.168.100.11
 sudo ip route add 172.22.0.0/16 via 192.168.100.11
+# 或者使用192.168.100.11充当默认网关
+sudo ip route replace default via 192.168.100.11 dev eth0
 # 路由持久化 参考Host11配置
 ```
 
@@ -248,6 +264,9 @@ sudo ip route add 192.168.200.0/24 via 192.168.100.21
 sudo ip route add 172.11.0.0/16 via 192.168.100.21
 sudo ip route add 172.12.0.0/16 via 192.168.100.21
 sudo ip route add 172.21.0.0/16 via 192.168.100.21
+# 或者使用192.168.200.21充当默认网关
+sudo ip route replace default via 192.168.200.21 dev eth0
+
 # 路由持久化 参考Host11配置
 ```
 
