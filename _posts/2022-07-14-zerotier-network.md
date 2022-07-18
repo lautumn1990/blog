@@ -197,6 +197,15 @@ Set-NetIPInterface -Forwarding Disabled
 # Set-Service RemoteAccess -StartupType Automatic; Start-Service RemoteAccess
 ```
 
+#### 开启Nat路由转发
+
+在windows中管理员权限运行`powershell`, 执行
+
+```powershell
+Get-NetNat | ? Name -Eq zero | Remove-NetNat -Confirm:$False;
+New-NetNat -Name zero -InternalIPInterfaceAddressPrefix 192.168.192.0/24;
+```
+
 #### 开启windows主机访问docker镜像
 
 由于windows主机无法通过`Container IP`直接访问docker中的服务, 如果没有此需求可以不安装以下服务
@@ -273,6 +282,71 @@ sudo ip route replace default via 192.168.200.21 dev eth0
 通过以上设置, 异地的局域网就可以组成一个`大的局域网`{:.info}进行无障碍的通信了
 
 其他通过VPS的操作可参考[基于Zerotier的虚拟局域网（内网穿透方案）](https://zhuanlan.zhihu.com/p/383471270)
+
+## 站内相关连接
+
+- [ip命令](/linux/2022/06/19/linux-ip.html)
+
+## zerotier命令
+
+```sh
+# 安装
+curl -s https://install.zerotier.com | sudo bash
+# 查询节点：
+zerotier-cli peers
+# 如果是RELAY则是p2p失败, 网速较慢
+
+# 加入网络(必须使用root权限):
+sudo zerotier-cli join xxxxxxxxxxxxxxxx
+
+# 离开网络：
+zerotier-cli leave xxxxxxxxxxx
+
+# 加入moon(自建节点)
+zerotier-cli orbit xxxxxxx yyyyyyyy
+
+# 离开moon
+zerotier-cli deorbit xxxxxxxx
+
+# 重启 zerotier-one
+sudo killall -9 zerotier-one
+
+# 重新启动moon服务器
+systemctl restart zerotier-one
+
+# zerotier-one目录
+cd /var/lib/zerotier-one
+
+# 检查应用的配置：
+systemctl cat zerotier-one
+
+# 编辑配置：
+sudo systemctl edit zerotier-one --full
+
+# ----------------------------------------------
+
+# moon服务器, 启动moon服务器不需要加入节点
+# 配置moon服务器步骤
+cd /var/lib/zerotier-one
+
+sudo zerotier-idtool initmoon /var/lib/zerotier-one/identity.public > moon.json
+# 编辑配置文件
+# 如果要修改端口
+# 需要创建local.conf
+# {"settings":{"primaryPort":9999}}
+# 编辑 moon.json 文件，写入根服务器IP "stableEndpoints": [ "10.0.0.2/9993"], 注意是斜杠//////////
+# 生成 .moon 文件
+sudo zerotier-idtool genmoon moon.json
+# 移动 .moon 文件到 moons.d 文件夹中(需要手动创建该文件夹)
+sudo mv 000000deadbeef00.moon /var/lib/zerotier-one/moons.d/
+# 重启 zerotier-one
+systemctl restart zerotier-one
+
+# 常规节点
+# 将根服务器添加到常规节点
+# moon服务器的安全性紧靠moon id保证, 任何人都可以通过moon id下载moon配置, 进而通过代理访问自己的zerotier局域网
+sudo zerotier-cli orbit deadbeef00 deadbeef00
+```
 
 ----
 
