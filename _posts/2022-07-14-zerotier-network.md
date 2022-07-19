@@ -15,7 +15,7 @@ pageview: true
 ### 目前主流的组网方案有
 
 - 端口流量转发：Frp转发，花生壳等
-- 虚拟局域网：Zerotier，N2N等
+- 虚拟局域网：Zerotier，N2N, tailscale等
 
 ### 优缺点
 
@@ -282,6 +282,10 @@ sudo ip route replace default via 192.168.200.21 dev eth0
 通过以上设置, 异地的局域网就可以组成一个`大的局域网`{:.info}进行无障碍的通信了
 
 其他通过VPS的操作可参考[基于Zerotier的虚拟局域网（内网穿透方案）](https://zhuanlan.zhihu.com/p/383471270)
+
+zerotier使用UDP进行p2p打洞, 可能会被服务商进行QoS限速, 如果传大文件的话, 建议使用frp或者找服务商要公网IP进行传输
+
+也可以尝试[tailscale](https://login.tailscale.com/admin/machines)进行打洞尝试
 
 ## 站内相关连接
 
