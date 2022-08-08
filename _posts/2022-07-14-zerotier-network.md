@@ -334,6 +334,7 @@ sudo systemctl edit zerotier-one --full
 cd /var/lib/zerotier-one
 
 sudo zerotier-idtool initmoon /var/lib/zerotier-one/identity.public > moon.json
+
 # 编辑配置文件
 # 如果要修改端口
 # 需要创建local.conf
