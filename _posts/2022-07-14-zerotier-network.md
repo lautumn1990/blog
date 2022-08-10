@@ -197,16 +197,20 @@ Set-NetIPInterface -Forwarding Disabled
 # Set-Service RemoteAccess -StartupType Automatic; Start-Service RemoteAccess
 ```
 
-#### 开启Nat路由转发
+#### 开启Nat转发
 
-在windows中管理员权限运行`powershell`, 执行
+`尽量不要开启Nat`{:.error}, 在windows中管理员权限运行`powershell`, 执行
 
 ```powershell
 Get-NetNat | ? Name -Eq zero | Remove-NetNat -Confirm:$False;
 New-NetNat -Name zero -InternalIPInterfaceAddressPrefix 192.168.200.0/24;
 ```
 
-注意: 此命令会可能会影响自定义的WSLNAT的正常运行
+注意:  
+此命令会可能会影响自定义的`WSLNAT`{:.error}的正常运行, 由于[windows只能创建一个NetNat](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/user-guide/setup-nat-network)  
+只开启路由转发, 能使Host22访问Host11中的ip地址, 但是可能无法访问Host12中的IP地址, 如果Host12中不配置`sudo ip route add 192.168.200.0/24 via 192.168.100.11`的话  
+但是应该也足够用了
+{:.warning}
 
 #### 开启windows主机访问docker镜像
 
