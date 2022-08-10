@@ -203,8 +203,10 @@ Set-NetIPInterface -Forwarding Disabled
 
 ```powershell
 Get-NetNat | ? Name -Eq zero | Remove-NetNat -Confirm:$False;
-New-NetNat -Name zero -InternalIPInterfaceAddressPrefix 192.168.192.0/24;
+New-NetNat -Name zero -InternalIPInterfaceAddressPrefix 192.168.200.0/24;
 ```
+
+注意: 此命令会可能会影响自定义的WSLNAT的正常运行
 
 #### 开启windows主机访问docker镜像
 
