@@ -259,6 +259,18 @@ Host22 --> ping 192.168.100.12 --> Host12
 此时会丢包, 由于没有配置route
 ```
 
+查询流量命令, 参考[Tcpdump Examples](https://hackertarget.com/tcpdump-examples/), windows请使用[wireshark](https://www.wireshark.org/#download)
+
+```shell
+# 查询流量
+sudo tcpdump -i eth0 icmp -n
+# 查询nat
+sudo netstat-nat -n
+# 如果出现以下错误, Could not read info about connections from the kernel, make sure netfilter is enabled in kernel or by modules.
+# 使用conntrack
+sudo conntrack -L -n
+```
+
 #### 开启windows主机访问docker镜像
 
 由于windows主机无法通过`Container IP`直接访问docker中的服务, 如果没有此需求可以不安装以下服务
