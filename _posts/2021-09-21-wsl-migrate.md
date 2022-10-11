@@ -257,7 +257,7 @@ swap=512MB
    sed -i 's/nameserver.*/\n# this is replace by init script\nnameserver 172.30.32.1/' /etc/resolv.conf
    
    # config vEthernet (WSL) ip
-   /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -c "Get-NetAdapter 'vEthernet (WSL)' | Get-NetIPAddress | Remove-NetIPAddress -Confirm:\\\$False; New-NetIPAddress -IPAddress 172.30.32.1 -PrefixLength 20 -InterfaceAlias 'vEthernet (WSL)';"
+   /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -c "Get-NetAdapter 'vEthernet (WSL)' -IncludeHidden | Get-NetIPAddress | Remove-NetIPAddress -Confirm:\\\$False; New-NetIPAddress -IPAddress 172.30.32.1 -PrefixLength 20 -InterfaceAlias 'vEthernet (WSL)';"
 
    # config WSLNat
    /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -c "Get-NetNat | ? Name -Eq WSLNat | Remove-NetNat -Confirm:\\\$False; New-NetNat -Name WSLNat -InternalIPInterfaceAddressPrefix 172.30.32.0/20;"
@@ -309,7 +309,7 @@ swap=512MB
    wsl -d Ubuntu -u root ip addr add 172.30.38.138/20 broadcast 172.30.47.255 dev eth0
    wsl -d Ubuntu -u root ip route add 0.0.0.0/0 via 172.30.32.1 dev eth0
    wsl -d Ubuntu -u root echo nameserver 172.30.32.1 ^> /etc/resolv.conf
-   powershell -c "Get-NetAdapter 'vEthernet (WSL)' | Get-NetIPAddress | Remove-NetIPAddress -Confirm:$False; New-NetIPAddress -IPAddress 172.30.32.1 -PrefixLength 20 -InterfaceAlias 'vEthernet (WSL)'; Get-NetNat | ? Name -Eq WSLNat | Remove-NetNat -Confirm:$False; New-NetNat -Name WSLNat -InternalIPInterfaceAddressPrefix 172.30.32.0/20;"
+   powershell -c "Get-NetAdapter 'vEthernet (WSL)' -IncludeHidden | Get-NetIPAddress | Remove-NetIPAddress -Confirm:$False; New-NetIPAddress -IPAddress 172.30.32.1 -PrefixLength 20 -InterfaceAlias 'vEthernet (WSL)'; Get-NetNat | ? Name -Eq WSLNat | Remove-NetNat -Confirm:$False; New-NetNat -Name WSLNat -InternalIPInterfaceAddressPrefix 172.30.32.0/20;"
    ```
 
 ## 脚本管理员权限
