@@ -93,6 +93,20 @@ systemctl disable docker.service
 systemctl disable docker.socket
 ```
 
+## 官方systemd
+
+如果需要使用微软官方支持的systmed，在目前(2022/10/11)来说你需要满足这些前置条件：
+
+1. 操作系统为windows 11
+1. wsl 版本为 0.67.6 或以上（目前均为预览版本）。下载地址[releases](https://github.com/microsoft/WSL/releases)
+
+查看wsl版本号命令为： `wsl --version`, 需要高于`0.67.6`
+
+通过以下命令在`/etc/wsl.conf`增加配置启动systemd, `echo -e "[boot]\nsystemd=true" | sudo tee -a /etc/wsl.conf`, 配置后需要通过`wsl --shutdown`命令关闭wsl，来进行wsl的完整重启。
+
+高版本的`wsl`和`22H2`静态ip可能会失效, 可通过hostname与主机进行通信
+
 ## 参考
 
 - [在 WSL 上使用 systemd](https://core.moe/posts/2021/02/wsl-systemd/)
+- [WSL 2 上启用微软官方支持的 systemd](https://www.cnblogs.com/wswind/p/wsl2-official-systemd.html)
