@@ -148,3 +148,11 @@ docker update --restart=no $(docker ps -aq -f label=com.docker.compose.project=<
 # 自动重启, 修改<project-name>
 docker update --restart=always $(docker ps -aq -f label=com.docker.compose.project=<project-name>) &
 ```
+
+## docker-compose更新单个镜像
+
+```sh
+docker-compose stop <service_name>
+docker-compose pull <service_name>
+docker-compose up -d --no-deps <service_name>
+```
