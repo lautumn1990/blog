@@ -103,6 +103,28 @@ git branch -r | awk -Forigin/ '/\/release/ {print $2}' | xargs -I {} git push or
 
 如果private key有密码, 可能需要一次次输入, 通过启动ssh-agent, ssh-add, 添加私钥输入密码, 避免每次都输入密码, 参考[Adding your SSH key to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent)
 
+### git代理设置
+
+如果`socks5`不能用, 请改为`socks5h`
+
+```sh
+# 设置全局代理
+git config --global http.proxy  socks5://127.0.0.1:10808
+git config --global https.proxy  socks5://127.0.0.1:10808
+# 清除代理设置
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+# 设置github全局代理
+git config --global http.https://github.com.proxy  socks5://127.0.0.1:10808
+git config --global https.https://github.com.proxy  socks5://127.0.0.1:10808
+# 清除代理设置
+git config --global --unset http.https://github.com.proxy
+git config --global --unset https.https://github.com.proxy
+```
+
+----
+
 ## 参考
 
 - [git 多用户配置（多用户 & 公司/个人）](https://segmentfault.com/a/1190000038722640)
