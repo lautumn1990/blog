@@ -254,6 +254,7 @@ swap=512MB
    /sbin/ip addr flush dev eth0
    /sbin/ip addr add 172.30.38.138/20 broadcast 172.30.47.255 dev eth0 label eth0
    /sbin/route add default gw 172.30.32.1
+   [ ! -f /etc/resolv.conf ] && echo "nameserver 172.30.32.0" > /etc/resolv.conf
    sed -rzi 's/(\n*# this is replace by init script\n*)*nameserver.*/\n# this is replace by init script\nnameserver 172.30.32.1/' /etc/resolv.conf
    
    # config vEthernet (WSL) ip
