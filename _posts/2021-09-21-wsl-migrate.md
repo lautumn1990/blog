@@ -361,6 +361,15 @@ swap=512MB
   New-NetNat -Name WSLNat -InternalIPInterfaceAddressPrefix 172.30.32.0/20;
   ```
 
+## docker exec定时任务无法执行
+
+- 没有执行的原因是, 不应该加`-it`, 这样就可以正常执行了, 参考[ubuntu中Crontab执行docker exec后台任务失败的问题](http://04007.cn/article/1177.html)
+
+  ```sh
+  0 2 * * * docker exec -it sphinx /bin/bash -c '/bin/indexer -c /usr/local/etc/csft.conf base_04007cn --rotate' >> /opt/logs/sphinx.log;
+  ```
+
+
 ----
 
 ## 参考
