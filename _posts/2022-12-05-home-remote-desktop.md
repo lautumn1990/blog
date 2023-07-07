@@ -47,6 +47,15 @@ rem 删除防火墙规则
 netsh advfirewall firewall delete rule name="0-my-rdp"
 ```
 
+## 开启配置文件自动更新
+
+由于windows的更新, 可能导致老的配置文件不可用, 参考[autoupdate](https://github.com/asmtron/rdpwrap/blob/master/binary-download.md), 直接[下载](https://github.com/asmtron/rdpwrap/raw/master/autoupdate.zip)
+
+需要修改两个位置, 由于国内可能连不上`github`和`google`的情况
+
+- `rdpwrap_ini_update_github_x`的地址前都加上`https://ghproxy.com/`代理前缀
+- `ping -n 1 google.com>nul`改为`ping -n 1 baidu.com>nul`
+
 ----
 
 ## 参考
