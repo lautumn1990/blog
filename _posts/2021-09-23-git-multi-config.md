@@ -59,6 +59,8 @@ git config --global user.email "MY_NAME@example.com"
 
 如个人和公司区分开, 使用`includeIf`引入多个配置
 
+注意结尾的`/`, 如果不加不会匹配子目录, [参考](https://git-scm.com/docs/git-config#Documentation/git-config.txt-codegitdircode)
+
 ```conf
 # 通过以下配置来引入新的用户名和邮箱
 [includeIf "gitdir:D:/project/company/"]
