@@ -369,6 +369,19 @@ swap=512MB
   0 2 * * * docker exec -it sphinx /bin/bash -c '/bin/indexer -c /usr/local/etc/csft.conf base_04007cn --rotate' >> /opt/logs/sphinx.log;
   ```
 
+## wsl2不能使用tail -f
+
+由于windows中的文件系统会在wsl中的ubuntu以/mnt/c, /mnt/d 这种方式挂载, Linux是通过inotify来获取文件变动的, wsl2中还不支持, 所以在wsl2使用`tail -f`监控不到windows系统中文件的变化
+
+可以禁用`inotify`, 使用轮询的方式进行文件的监控, 虽然效率低, 但是兼容性好.
+
+可以直接设置为tail的别名
+
+```sh
+alias tail="tail ---disable-inotify"
+```
+
+参考[How do I examine the tail of a growing file on WSL-2](https://stackoverflow.com/a/70259631/9304033)
 
 ----
 
