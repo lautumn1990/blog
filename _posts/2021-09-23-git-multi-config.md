@@ -105,6 +105,27 @@ git branch -r | awk -Forigin/ '/\/release/ {print $2}' | xargs -I {} git push or
 
 如果private key有密码, 可能需要一次次输入, 通过启动ssh-agent, ssh-add, 添加私钥输入密码, 避免每次都输入密码, 参考[Adding your SSH key to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent)
 
+### git切换远程地址
+
+切换远程地址, 把原来的远程分支推送到新的远程分支
+
+```sh
+# 从一个远程, 批量添加远程到另一个远程
+git remote add 新的远程名 新的远程地址
+# 原来的origin的所有分支
+git push 新的远程名 --tags "refs/remotes/origin/*:refs/heads/*"
+# 单独一条
+git push 远程名 本地分支名:远程分支名
+```
+
+其他人员配置
+
+```sh
+git remote set-url origin 新的远程地址
+git fetch --prune
+git branch -a -vv
+```
+
 ### git代理设置
 
 如果`socks5`不能用, 请改为`socks5h`
