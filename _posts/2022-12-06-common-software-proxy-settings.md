@@ -115,15 +115,21 @@ git config --global --unset https.https://github.com.proxy
 在 /etc/apt/apt.conf.d/ 目录下新增 proxy.conf 文件，加入：
 
 ```conf
-Acquire::http::Proxy "http://127.0.0.1:8080/";
-Acquire::https::Proxy "http://127.0.0.1:8080/";
+Acquire::http::Proxy "http://127.0.0.1:10809/";
+Acquire::https::Proxy "http://127.0.0.1:10809/";
 ```
 
 如果希望使用 Socks5 代理，则加入：
 
 ```conf
-Acquire::http::Proxy "socks5h://127.0.0.1:8080/";
-Acquire::https::Proxy "socks5h://127.0.0.1:8080/";
+Acquire::http::Proxy "socks5h://127.0.0.1:10808/";
+Acquire::https::Proxy "socks5h://127.0.0.1:10808/";
+```
+
+- **单次使用**
+
+```sh
+sudo apt-get -o Acquire::http::proxy="socks5h://127.0.0.1:10808/" -o Acquire::https::proxy="socks5h://127.0.0.1:10808/" update
 ```
 
 ### gradle使用代理
