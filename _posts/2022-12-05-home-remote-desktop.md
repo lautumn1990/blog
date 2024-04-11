@@ -56,8 +56,13 @@ netsh advfirewall firewall delete rule name="0-my-rdp"
 - `rdpwrap_ini_update_github_x`的地址前都加上`https://ghproxy.com/`代理前缀
 - `ping -n 1 google.com>nul`改为`ping -n 1 baidu.com>nul`
 
+## 手动更新rdpwrap.ini
+
+有时网上更新的`rdpwrap.ini`配置不及时, 找不到对应的配置文件, 这时可以通过以下工具自动找到对应版本的配置文件, 手动更新到`rdpwrap.ini`文件中, 下载地址[RDPWrapOffsetFinder](https://github.com/llccd/RDPWrapOffsetFinder/releases), 找到对应版本的`RDPWrapOffsetFinder.exe`运行即可
+
 ----
 
 ## 参考
 
 - [Win11家庭版 使用RDPWrap开启远程桌面](https://blog.csdn.net/qq_41242689/article/details/124715297)
+- [RDPWrapOffsetFinder](https://github.com/llccd/RDPWrapOffsetFinder)
