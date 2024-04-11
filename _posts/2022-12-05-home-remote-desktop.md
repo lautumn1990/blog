@@ -58,7 +58,42 @@ netsh advfirewall firewall delete rule name="0-my-rdp"
 
 ## 手动更新rdpwrap.ini
 
-有时网上更新的`rdpwrap.ini`配置不及时, 找不到对应的配置文件, 这时可以通过以下工具自动找到对应版本的配置文件, 手动更新到`rdpwrap.ini`文件中, 下载地址[RDPWrapOffsetFinder](https://github.com/llccd/RDPWrapOffsetFinder/releases), 找到对应版本的`RDPWrapOffsetFinder.exe`运行即可
+有时网上更新的`rdpwrap.ini`配置不及时, 找不到对应的配置文件, 这时可以通过以下工具自动找到对应版本的配置文件, 手动更新到`rdpwrap.ini`文件中, 下载地址[RDPWrapOffsetFinder](https://github.com/llccd/RDPWrapOffsetFinder/releases), 找到对应版本的`RDPWrapOffsetFinder.exe`运行即可.
+
+直接双击运行可能会一闪而过, 此时可通过以下脚本运行
+
+```bat
+@echo off
+echo.
+set "BASE_PATH=C:\ls\RDPWrapOffsetFinder\64bit"
+set "EXE_PATH=%BASE_PATH%\RDPWrapOffsetFinder.exe"
+set "TEMP_PATH=%BASE_PATH%\sym"
+
+:parse
+    IF "%~1"=="" GOTO start_and_clean
+    IF "%~1"=="-s" GOTO start_and_save
+
+:start_and_save
+    call "%EXE_PATH%"
+    goto :end
+
+:start_and_clean
+    call "%EXE_PATH%"
+    goto :clean
+
+:clean
+    if exist "%TEMP_PATH%" (
+        rd /s /q "%TEMP_PATH%"
+    )
+    goto :end
+:end
+    echo.
+    echo.
+    echo.
+    echo 请将以上内容保存到对应的rdpwrap.ini文件中
+    echo.
+    pause
+```
 
 ----
 
