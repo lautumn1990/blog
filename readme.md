@@ -9,11 +9,11 @@
 ```shell
 # see https://stackoverflow.com/a/41489151/9304033
 # linux 
-# docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app ruby:2.7 bundle install
+# docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app ruby:3.1 bundle install
 # windows cmd
-docker run --rm -v "%cd%":/usr/src/app -w /usr/src/app ruby:2.7 bundle install
+docker run --rm -v "%cd%":/usr/src/app -w /usr/src/app ruby:3.1 bundle install
 # windows power shell 
-# docker run --rm -v "${PWD}":/usr/src/app -w /usr/src/app ruby:2.7 bundle install
+# docker run --rm -v "${PWD}":/usr/src/app -w /usr/src/app ruby:3.1 bundle install
 
 docker-compose -f ./docker/docker-compose.build-image.yml build
 docker-compose -p jekyll -f ./docker/docker-compose.default.yml up
