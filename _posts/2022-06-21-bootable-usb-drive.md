@@ -162,6 +162,8 @@ rem 查看进度
 manage-bde -status
 ```
 
+其余bitlocker相关命令[bitlocker相关命令.md](/assets/sources/2022/06/bitlocker相关命令.md)
+
 ### 制作pe镜像
 
 [微PE工具箱](https://www.wepe.com.cn/download.html), 打开后点击右下角的光盘图标，让微型PE生成ISO镜像文件并保存到指定路径即可。这个镜像可用于 Ventoy 中的U盘里使用, 参考[微PE工具箱2.2 – 最好用的纯净 WinPE 启动盘/ U盘系统重装维护工具](https://www.jianeryi.com/wepe.html)
