@@ -418,6 +418,33 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple <package>
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
+- **pip在ubuntu中使用venv**
+
+参考[Ubuntu24.04LTS使用pip时显示：error: externally-managed-environment](https://www.cnblogs.com/rech/p/18335556)
+
+```sh
+# 1. 创建虚拟环境
+cd ~
+mkdir .python_venv
+cd .python_venv
+python3 -m venv global
+cd ~
+
+# 2. 通过alias激活
+# .bashrc
+# echo "alias actpy='. ~/.python_venv/global/bin/activate'" >> ~/.bashrc
+# .zshrc
+echo "alias actpy='. ~/.python_venv/global/bin/activate'" >> ~/.zshrc
+. ~/.zshrc
+
+# 3. 通过命令进入global虚拟环境
+actpy
+
+# 4. 如果在shell脚本中使用pip安装的依赖, 请在执行python前, 先进入虚拟环境
+#!/bin/bash
+. ~/.python_venv/global/bin/activate
+```
+
 ### git使用镜像
 
 参考[ghproxy](https://ghproxy.com/)
